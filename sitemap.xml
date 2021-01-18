@@ -3,7 +3,7 @@
       
       
 	  <url>
-	    <loc>http://example.org/</loc>
+	    <loc>https://example.com/</loc>
 	    <lastmod>2021-01-18</lastmod>
         
 
@@ -14,7 +14,7 @@
       
       
 	  <url>
-	    <loc>http://example.org/post/</loc>
+	    <loc>https://example.com/posts/</loc>
 	    <lastmod>2021-01-18</lastmod>
         
 
@@ -25,7 +25,7 @@
       
       
 	  <url>
-	    <loc>http://example.org/post/test/</loc>
+	    <loc>https://example.com/tags/</loc>
 	    <lastmod>2021-01-18</lastmod>
         
 
@@ -36,8 +36,45 @@
       
       
 	  <url>
-	    <loc>http://example.org/tags/</loc>
-	    <lastmod>0001-01-01</lastmod>
+	    <loc>https://example.com/posts/test/</loc>
+	    <lastmod>2021-01-18</lastmod>
+        
+
+        
+	  </url>
+	  
+  
+      
+      
+	  <url>
+	    <loc>https://example.com/tags/%EC%8B%A0%EA%B8%B0%ED%95%98%EB%84%A4/</loc>
+	    <lastmod>2021-01-18</lastmod>
+        
+
+        
+	  </url>
+	  
+  
+      
+      
+	  <url>
+	    <loc>https://example.com/author/</loc>
+	    <lastmod>2020-04-06</lastmod>
+        
+
+        
+	  </url>
+	  
+  
+      
+  
+      
+  
+      
+      
+	  <url>
+	    <loc>https://example.com/sections/</loc>
+	    <lastmod>2020-04-06</lastmod>
         
 
         
