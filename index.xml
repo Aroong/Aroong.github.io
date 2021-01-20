@@ -13,7 +13,9 @@
       <pubDate>Mon, 18 Jan 2021 13:32:12 +0900</pubDate>
       
       <guid>https://aroong.github.io/posts/test/</guid>
-      <description>안녕하세요!! 테스트 페이지 입니다.</description>
+      <description>안녕하세요!! 테스트 페이지 입니다.
+이미지 여러개 쓸수있나요
+image: &amp;ldquo;/image/mm_playmobile.png&amp;rdquo;</description>
     </item>
     
     <item>
