@@ -15,7 +15,7 @@
       <guid>https://aroong.github.io/posts/test/</guid>
       <description>안녕하세요!! 테스트 페이지 입니다.
 이미지 여러개 쓸수있나요
-\caption{플모 머리끄댕이 주뜯는 묘묘}</description>
+{ {&amp;lt; figure src=&amp;quot;/image/mm_playmobile.png&amp;quot; caption=&amp;ldquo;플레이모빌 머리 쥐어뜯는 묘묘&amp;rdquo; title=&amp;ldquo;플레이모빌과 묘묘&amp;rdquo;&amp;gt;}}</description>
     </item>
     
   </channel>
