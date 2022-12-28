@@ -9,29 +9,11 @@
     <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/tags/ramium/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tutorial</title>
-      <link>https://aroong.github.io/1.-spring/1.-tutorial/</link>
+      <link>https://aroong.github.io/spring/1.-tutorial/</link>
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://aroong.github.io/1.-spring/1.-tutorial/</guid>
+      <guid>https://aroong.github.io/spring/1.-tutorial/</guid>
       <description>Full tutorial coming soon! </description>
-    </item>
-    
-    <item>
-      <title>Features of Ramium</title>
-      <link>https://aroong.github.io/2.-playmobil/2.-features-of-ramium/</link>
-      <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://aroong.github.io/2.-playmobil/2.-features-of-ramium/</guid>
-      <description>&lt;p&gt;Ramium is Packed with awesome features that makes your blog powerful and easy to use.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>About Ramium</title>
-      <link>https://aroong.github.io/2.-playmobil/1.-about-ramium/</link>
-      <pubDate>Tue, 17 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://aroong.github.io/2.-playmobil/1.-about-ramium/</guid>
-      <description>Ramium is an awesome hugo theme for creating personal blogs. Apparently, none of the existing hugo themes were what I wanted them to be for my new blog. Or maybe I just could not find the right one. So I took upon the courtesy of making the perfect one for my own.</description>
     </item>
     
   </channel>
