@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 25 Mar 2020 04:52:30 +0600</lastBuildDate><atom:link href="https://aroong.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Test</title>
+      <link>https://aroong.github.io/posts/7.-test/</link>
+      <pubDate>Wed, 28 Dec 2022 15:48:55 +0900</pubDate>
+      
+      <guid>https://aroong.github.io/posts/7.-test/</guid>
+      <description>테스트 페이지 입니다.</description>
+    </item>
+    
+    <item>
       <title>Markdown Syntax Guide</title>
       <link>https://aroong.github.io/posts/1.-markdown-syntax/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
@@ -49,7 +58,7 @@
       <pubDate>Mon, 06 Apr 2020 02:07:31 +0600</pubDate>
       
       <guid>https://aroong.github.io/author/</guid>
-      <description>뭐해먹고 살지?</description>
+      <description>뭐해먹고 살지???</description>
     </item>
     
     <item>
