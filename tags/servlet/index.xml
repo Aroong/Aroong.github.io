@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Servlet on Aroong&#39;s Blog</title>
+    <link>https://aroong.github.io/tags/servlet/</link>
+    <description>Recent content in Servlet on Aroong&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/tags/servlet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Servlet</title>
+      <link>https://aroong.github.io/spring-mvc/1.-servlet/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/spring-mvc/1.-servlet/</guid>
+      <description>스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
+서블릿 프로젝트 생성 https://start.spring.io 사이트에서 위와같이 Project, Project Metadata, Dependencies를 세팅하고</description>
+    </item>
+    
+  </channel>
+</rss>
