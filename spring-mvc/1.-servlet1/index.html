@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Servlet 1 | 
+    
+    Aroong&#39;s Blog</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
+[서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고
+    ">
+
+
+<meta property="og:title" content="Servlet 1" />
+<meta property="og:description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
+[서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aroong.github.io/spring-mvc/1.-servlet1/" /><meta property="article:section" content="Spring MVC" />
+<meta property="article:published_time" content="2022-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-29T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Servlet 1"/>
+<meta name="twitter:description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
+[서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고"/>
+
+<meta itemprop="name" content="Servlet 1">
+<meta itemprop="description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
+[서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고"><meta itemprop="datePublished" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="237">
+<meta itemprop="keywords" content="Servlet," />
+<link rel="canonical" href="https://aroong.github.io/spring-mvc/1.-servlet1/" />
+
+<link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>Aroong&#39;s Blog </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="/author/">Author</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/Aroong" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Servlet 1</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 29, 2022
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.<br>
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.<br>
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.</p>
+<h3 id="서블릿-프로젝트-생성">[서블릿 프로젝트 생성]</h3>
+<ul>
+<li><a href="https://start.spring.io">https://start.spring.io</a> 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고<br>
+GENERATE를 누르면 기본 프로젝트를 생성해서 파일로 내려준다. (servlet.zip 받은 파일 내용)</li>
+</ul>
+<p><img src="/image/startspringio.PNG" alt="start_spring_io"></p>
+<p><img src="/image/servletzip.PNG" alt="servlet_zip"></p>
+<ul>
+<li>이클립스에 Import 하기 : Import Project &gt; Gradle &gt; Project root Directory 에서 위에 받은 기본 프로젝트 선택하고 프로젝트 생성.<br>
+프로젝트 Import 하면서 이클립스 버전 업데이트, Eclipse용 Spring Boot 버전업 다 해줬다.<br>이클립스용 JAVA 17 버전 사용 함.</li>
+</ul>
+<p><img src="/image/eclipseimport.PNG" alt="eclipse_import_1"></p>
+<p><img src="/image/eclipseimport2.PNG" alt="eclipse_import_2"></p>
+<p><img src="/image/eclipseimport3.PNG" alt="eclipse_import_3"></p>
+<ul>
+<li>main 에서 Run as &gt; Spring Boot App 으로 실행시키면 Spring Boot 내장 WAS(tomcat)이 구동된다.</li>
+</ul>
+<p><img src="/image/run_as.png" alt="run_as"></p>
+<p><img src="/image/spring_run_app.PNG" alt="spring_run_app"></p>
+<h3 id="기본-서블릿-만들어보기">[기본 서블릿 만들어보기]</h3>
+<ul>
+<li>hello.servlet 아래 basic 패키지를 하나 만든 후 서블릿을 생성해본다.</li>
+</ul>
+<pre tabindex="0"><code>package hello.servlet.basic;
+
+import java.io.IOException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet(name = &#34;HelloServlet&#34;, urlPatterns = &#34;/hello&#34;) //서블릿 name:서블릿이름, urlPatterns:URL매핑 (겹치면 안됨)
+public class HelloServlet extends HttpServlet{
+
+	//위 서블릿이 호출되면 아래 service가 자동 실행된다.
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//super.service(req, resp);
+		System.out.println(&#34;HelloServlet.service&#34;);
+		System.out.println(&#34;request = &#34; + request);
+		System.out.println(&#34;response = &#34; + response);
+		
+		String username = request.getParameter(&#34;username&#34;);
+		System.out.println(&#34;username = &#34; + username);
+		
+		response.setContentType(&#34;text/plain&#34;);
+		response.setCharacterEncoding(&#34;utf-8&#34;);
+		response.getWriter().write(&#34;Hello &#34; + username);
+	}
+	
+}
+</code></pre><ul>
+<li>콘솔로그로 response와 request에 어떤 값이 담겨서 통신되는지 찍어볼수 있다.</li>
+</ul>
+<p><img src="/image/hello_servlet.PNG" alt="hello_servlet"></p>
+<ul>
+<li>브라우저 요청 결과</li>
+</ul>
+<p><img src="/image/hello_aroong.PNG" alt="hello_aroong"></p>
+<ul>
+<li>스프링 부트 application.properties를 세팅하면 http header등 자세한 요청메시지 로그도 볼 수 있다.</li>
+</ul>
+<pre tabindex="0"><code>logging.level.org.apache.coyote.http11=debug
+</code></pre><p><img src="/image/application_properties_log.PNG" alt="application_properties_log"></p>
+<h3 id="welcome-페이지-만들기">[Welcome 페이지 만들기]</h3>
+<ul>
+<li>main아래 webapp폴더를 만들고 index.html을 만들어두면 서블릿 이름 없이 http://localhost:8080/ 로만 들어왔을 때 index페이지가 뜬다.</li>
+</ul>
+<p><img src="/image/main_index.PNG" alt="main_index"></p>
+<p><img src="/image/index_html.PNG" alt="index_html"></p>
+
+    </div>
+</div><div style="margin-top:200px;">
+  <script src="https://utteranc.es/client.js"
+        repo="Aroong/blog-comments"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+	</script>
+</div><br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            Posted by
+            <a class="has-text-light" href="https://github.com/Aroong" target="_blank">
+            Aroong</a>🥰
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
