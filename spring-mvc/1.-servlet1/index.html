@@ -2,22 +2,22 @@
 <html lang="en-us">
 
 <head><title>
-    Servlet 1 | 
+    Servlet 1 - Servlet 기본 | 
     
     Aroong&#39;s Blog</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
-정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)
 스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
 [서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고
     ">
 
 
-<meta property="og:title" content="Servlet 1" />
+<meta property="og:title" content="Servlet 1 - Servlet 기본" />
 <meta property="og:description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
-정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)
 스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
 [서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고" />
 <meta property="og:type" content="article" />
@@ -26,19 +26,19 @@
 <meta property="article:modified_time" content="2022-12-29T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Servlet 1"/>
+<meta name="twitter:title" content="Servlet 1 - Servlet 기본"/>
 <meta name="twitter:description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
-정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)
 스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
 [서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고"/>
 
-<meta itemprop="name" content="Servlet 1">
+<meta itemprop="name" content="Servlet 1 - Servlet 기본">
 <meta itemprop="description" content="스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
-정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)
 스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
 [서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고"><meta itemprop="datePublished" content="2022-12-29T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-12-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="237">
+<meta itemprop="wordCount" content="241">
 <meta itemprop="keywords" content="Servlet," />
 <link rel="canonical" href="https://aroong.github.io/spring-mvc/1.-servlet1/" />
 
@@ -118,7 +118,7 @@
         <div id="page-body" class="column is-7">
 
 <div class="content blog">
-    <h1>Servlet 1</h1>
+    <h1>Servlet 1 - Servlet 기본</h1>
 
     <div id="infobar" class="level is-mobile">
         <div class="level-left">
@@ -154,7 +154,7 @@
         
 
         <p>스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.<br>
-정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄.<br>
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)<br>
 스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.</p>
 <h3 id="서블릿-프로젝트-생성">[서블릿 프로젝트 생성]</h3>
 <ul>
@@ -179,36 +179,36 @@ GENERATE를 누르면 기본 프로젝트를 생성해서 파일로 내려준다
 <ul>
 <li>hello.servlet 아래 basic 패키지를 하나 만든 후 서블릿을 생성해본다.</li>
 </ul>
-<pre tabindex="0"><code>package hello.servlet.basic;
-
-import java.io.IOException;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-@WebServlet(name = &#34;HelloServlet&#34;, urlPatterns = &#34;/hello&#34;) //서블릿 name:서블릿이름, urlPatterns:URL매핑 (겹치면 안됨)
-public class HelloServlet extends HttpServlet{
-
-	//위 서블릿이 호출되면 아래 service가 자동 실행된다.
-	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//super.service(req, resp);
-		System.out.println(&#34;HelloServlet.service&#34;);
-		System.out.println(&#34;request = &#34; + request);
-		System.out.println(&#34;response = &#34; + response);
-		
-		String username = request.getParameter(&#34;username&#34;);
-		System.out.println(&#34;username = &#34; + username);
-		
-		response.setContentType(&#34;text/plain&#34;);
-		response.setCharacterEncoding(&#34;utf-8&#34;);
-		response.getWriter().write(&#34;Hello &#34; + username);
-	}
-	
-}
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.basic<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.annotation.WebServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HelloServlet&#34;</span><span style="color:#f92672">,</span> urlPatterns <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/hello&#34;</span><span style="color:#f92672">)</span> <span style="color:#75715e">//서블릿 name:서블릿이름, urlPatterns:URL매핑 (겹치면 안됨)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloServlet</span> <span style="color:#66d9ef">extends</span> HttpServlet<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//위 서블릿이 호출되면 아래 service가 자동 실행된다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//super.service(req, resp);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HelloServlet.service&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;request = &#34;</span> <span style="color:#f92672">+</span> request<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;response = &#34;</span> <span style="color:#f92672">+</span> response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		String username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username = &#34;</span> <span style="color:#f92672">+</span> username<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setContentType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;text/plain&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setCharacterEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;utf-8&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">getWriter</span><span style="color:#f92672">().</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello &#34;</span> <span style="color:#f92672">+</span> username<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
 <li>콘솔로그로 response와 request에 어떤 값이 담겨서 통신되는지 찍어볼수 있다.</li>
 </ul>
 <p><img src="/image/hello_servlet.PNG" alt="hello_servlet"></p>
