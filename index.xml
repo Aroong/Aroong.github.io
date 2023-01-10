@@ -51,6 +51,18 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
     </item>
     
     <item>
+      <title>Servlet 5 - 서블릿으로 회원관리 만들어보기</title>
+      <link>https://aroong.github.io/spring-mvc/5.-servlet5/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/spring-mvc/5.-servlet5/</guid>
+      <description>순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
+1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성 hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.
+Member 회원 도메인 모델
+package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter; @Getter @Setter public class Member { private Long id; private String username; private int age; public Member() { } public Member(String username, int age) { this.</description>
+    </item>
+    
+    <item>
       <title>Markdown Syntax Guide</title>
       <link>https://aroong.github.io/posts/1.-markdown-syntax/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>

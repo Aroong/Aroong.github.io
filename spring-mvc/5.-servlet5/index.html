@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Servlet 5 - 서블릿으로 회원관리 만들어보기 | 
+    
+    Aroong&#39;s Blog</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
+1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성 hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.
+Member 회원 도메인 모델
+package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter; @Getter @Setter public class Member { private Long id; private String username; private int age; public Member() { } public Member(String username, int age) { this.
+    ">
+
+
+<meta property="og:title" content="Servlet 5 - 서블릿으로 회원관리 만들어보기" />
+<meta property="og:description" content="순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
+1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성 hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.
+Member 회원 도메인 모델
+package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter; @Getter @Setter public class Member { private Long id; private String username; private int age; public Member() { } public Member(String username, int age) { this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aroong.github.io/spring-mvc/5.-servlet5/" /><meta property="article:section" content="Spring MVC" />
+<meta property="article:published_time" content="2022-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-29T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Servlet 5 - 서블릿으로 회원관리 만들어보기"/>
+<meta name="twitter:description" content="순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
+1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성 hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.
+Member 회원 도메인 모델
+package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter; @Getter @Setter public class Member { private Long id; private String username; private int age; public Member() { } public Member(String username, int age) { this."/>
+
+<meta itemprop="name" content="Servlet 5 - 서블릿으로 회원관리 만들어보기">
+<meta itemprop="description" content="순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
+1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성 hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.
+Member 회원 도메인 모델
+package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter; @Getter @Setter public class Member { private Long id; private String username; private int age; public Member() { } public Member(String username, int age) { this."><meta itemprop="datePublished" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="316">
+<meta itemprop="keywords" content="Servlet," />
+<link rel="canonical" href="https://aroong.github.io/spring-mvc/5.-servlet5/" />
+
+<link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>Aroong&#39;s Blog </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="/author/">Author</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/Aroong" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Servlet 5 - 서블릿으로 회원관리 만들어보기</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 29, 2022
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)</p>
+<h3 id="1-회원-도메인-모델-회원-저장관리-레포지토리-생성">1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성</h3>
+<ul>
+<li>
+<p>hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.</p>
+</li>
+<li>
+<p>Member 회원 도메인 모델</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.domain.member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lombok.Getter<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lombok.Setter<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Getter</span> <span style="color:#a6e22e">@Setter</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Member</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Long id<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String username<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Member</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Member</span><span style="color:#f92672">(</span>String username<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> username<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>MemberRepository 회원 저장소</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.domain.member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 동시성 문제가 고려되어 있지 않음, 실무에서는 ConcorrentHashMap, AtomicLong 사용 고려
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//간단하게 만드는거기 때문에 싱글톤으로 만들어서 사용 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberRepository</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> Map<span style="color:#f92672">&lt;</span>Long<span style="color:#f92672">,</span> Member<span style="color:#f92672">&gt;</span> store <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> sequence <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>L<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> MemberRepository instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MemberRepository<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//getInstance로만 이 클래스 store 데이터를 가져올 수 있게만듬
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> MemberRepository <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> instance<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">MemberRepository</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Member <span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>Member member<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		member<span style="color:#f92672">.</span><span style="color:#a6e22e">setId</span><span style="color:#f92672">(++</span>sequence<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		store<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>member<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">(),</span> member<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Member <span style="color:#a6e22e">findById</span><span style="color:#f92672">(</span>Long id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> store<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Member<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findAll</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;(</span>store<span style="color:#f92672">.</span><span style="color:#a6e22e">values</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//테스트하기 용이하게 Map 데이터 초기화 메소드 만듬
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clearStore</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		store<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>만들어진 회원 도메인 모델과 회원 저장소는 JUnit과 AssertJ Api를 통해 테스트해 볼 수 있다.</li>
+<li>이클립스 프로젝트에서 src.test에 hello.servlet.domain.member를 똑같이 만들고 테스트 클래스 MemberRepositoryTest를 하나 만든다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.domain.member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.assertj.core.api.Assertions<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.junit.jupiter.api.AfterEach<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.junit.jupiter.api.Test<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberRepositoryTest</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	MemberRepository memberRepository <span style="color:#f92672">=</span> MemberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//각 @Test 테스트 후 memberRepository 초기화
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">@AfterEach</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">afterEach</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>		memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">clearStore</span><span style="color:#f92672">();</span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//회원정보 저장해서 맞게 저장되었나 확인해보기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">save</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//given
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Member member <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Member<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;aroong&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//when
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Member savedMember <span style="color:#f92672">=</span> memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>member<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//then
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Member findMember <span style="color:#f92672">=</span> memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findById</span><span style="color:#f92672">(</span>savedMember<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//검증
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Assertions<span style="color:#f92672">.</span><span style="color:#a6e22e">assertThat</span><span style="color:#f92672">(</span>findMember<span style="color:#f92672">).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span>savedMember<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//회원정보 두명 저장해서 두개 정보 맞게 저장되었나 확인해보기
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findAll</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//given
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Member member1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Member<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;aroong1&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		Member member2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Member<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;aroong2&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">30</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>member1<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>member2<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//when
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		List<span style="color:#f92672">&lt;</span>Member<span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findAll</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//then
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Assertions<span style="color:#f92672">.</span><span style="color:#a6e22e">assertThat</span><span style="color:#f92672">(</span>result<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">isEqualTo</span><span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		Assertions<span style="color:#f92672">.</span><span style="color:#a6e22e">assertThat</span><span style="color:#f92672">(</span>result<span style="color:#f92672">).</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>member1<span style="color:#f92672">,</span> member2<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>Junit Test 컴파일 돌려보면 두개 @Test가 성공하는걸 볼 수 있다.</li>
+</ul>
+<p><img src="/image/member_junit_test.PNG" alt="member_junit_test.PNG"></p>
+
+    </div>
+</div><div style="margin-top:200px;">
+  <script src="https://utteranc.es/client.js"
+        repo="Aroong/blog-comments"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+	</script>
+</div><br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            Posted by
+            <a class="has-text-light" href="https://github.com/Aroong" target="_blank">
+            Aroong</a>🥰
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
