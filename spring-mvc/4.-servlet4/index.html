@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    Servlet 4 - HttpServletResponse | 
+    
+    Aroong&#39;s Blog</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)
+1. HttpServletResponse 기본 사용법 hello.servlet.basic아래 reponse 폴더를 만든 후 ResponseHeaderServlet 클래스를 생성하고 브라우저에서 요청이 있을때 응답을 어떻게 줄 수 있는지 확인한다.
+package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.servlet.ServletException; import jakarta.servlet.annotation.WebServlet; import jakarta.
+    ">
+
+
+<meta property="og:title" content="Servlet 4 - HttpServletResponse" />
+<meta property="og:description" content="HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)
+1. HttpServletResponse 기본 사용법 hello.servlet.basic아래 reponse 폴더를 만든 후 ResponseHeaderServlet 클래스를 생성하고 브라우저에서 요청이 있을때 응답을 어떻게 줄 수 있는지 확인한다.
+package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.servlet.ServletException; import jakarta.servlet.annotation.WebServlet; import jakarta." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aroong.github.io/spring-mvc/4.-servlet4/" /><meta property="article:section" content="Spring MVC" />
+<meta property="article:published_time" content="2022-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-29T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Servlet 4 - HttpServletResponse"/>
+<meta name="twitter:description" content="HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)
+1. HttpServletResponse 기본 사용법 hello.servlet.basic아래 reponse 폴더를 만든 후 ResponseHeaderServlet 클래스를 생성하고 브라우저에서 요청이 있을때 응답을 어떻게 줄 수 있는지 확인한다.
+package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.servlet.ServletException; import jakarta.servlet.annotation.WebServlet; import jakarta."/>
+
+<meta itemprop="name" content="Servlet 4 - HttpServletResponse">
+<meta itemprop="description" content="HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)
+1. HttpServletResponse 기본 사용법 hello.servlet.basic아래 reponse 폴더를 만든 후 ResponseHeaderServlet 클래스를 생성하고 브라우저에서 요청이 있을때 응답을 어떻게 줄 수 있는지 확인한다.
+package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.servlet.ServletException; import jakarta.servlet.annotation.WebServlet; import jakarta."><meta itemprop="datePublished" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="347">
+<meta itemprop="keywords" content="Servlet,HttpServletResponse," />
+<link rel="canonical" href="https://aroong.github.io/spring-mvc/4.-servlet4/" />
+
+<link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>Aroong&#39;s Blog </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="/author/">Author</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/Aroong" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>Servlet 4 - HttpServletResponse</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Dec 29, 2022
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    4 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/httpservletresponse">HttpServletResponse</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/httpservletresponse">HTTP servlet response</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <p>HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)<br></p>
+<h3 id="1-httpservletresponse-기본-사용법">1. HttpServletResponse 기본 사용법</h3>
+<ul>
+<li>hello.servlet.basic아래 reponse 폴더를 만든 후 ResponseHeaderServlet 클래스를 생성하고 브라우저에서 요청이 있을때 응답을 어떻게 줄 수 있는지 확인한다.<br></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.basic.reponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.annotation.WebServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.Cookie<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;responseHeaderServlet&#34;</span><span style="color:#f92672">,</span> urlPatterns <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/response-header&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResponseHeaderServlet</span> <span style="color:#66d9ef">extends</span> HttpServlet <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//[status-line] 응답코드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span>HttpServletResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">SC_OK</span><span style="color:#f92672">);</span> <span style="color:#75715e">//200
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">//response.setStatus(HttpServletResponse.SC_BAD_REQUEST); //400
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//[response-headers] 해더생성
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">//아래 주석처럼 setHeader로 Content-Type을 줄 수도있고 아래 편의 메소드를 사용해서 줄 수도 있다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">//response.setHeader(&#34;Content-Type&#34;, &#34;text/plain;charset=utf-8&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setHeader</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cache-Control&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;no-cache, no-store, must-revalidate&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//케시 무효화
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setHeader</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Pragma&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;no-cache&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//케시 무효화
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setHeader</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;my-header&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;hello&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//사용자 지정 해더
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//Content-Type 편의 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		content<span style="color:#f92672">(</span>response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//쿠키 편의 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		cookie<span style="color:#f92672">(</span>response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//redirect 편의 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		redirect<span style="color:#f92672">(</span>response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">getWriter</span><span style="color:#f92672">().</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//Content-Type 편의 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">(</span>HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		 <span style="color:#75715e">//Content-Type: text/plain;charset=utf-8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 <span style="color:#75715e">//Content-Length: 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 <span style="color:#75715e">//response.setHeader(&#34;Content-Type&#34;, &#34;text/plain;charset=utf-8&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 response<span style="color:#f92672">.</span><span style="color:#a6e22e">setContentType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;text/plain&#34;</span><span style="color:#f92672">);</span> 
+</span></span><span style="display:flex;"><span>		 response<span style="color:#f92672">.</span><span style="color:#a6e22e">setCharacterEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;utf-8&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		 <span style="color:#75715e">//response.setContentLength(2); //(생략시 자동으로 길이 생성)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//쿠키 편의 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cookie</span><span style="color:#f92672">(</span>HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		 <span style="color:#75715e">//Set-Cookie: myCookie=good; Max-Age=600;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 <span style="color:#75715e">//response.setHeader(&#34;Set-Cookie&#34;, &#34;myCookie=good; Max-Age=600&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 Cookie cookie <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Cookie<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;myCookie&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;good&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		 cookie<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxAge</span><span style="color:#f92672">(</span><span style="color:#ae81ff">600</span><span style="color:#f92672">);</span> <span style="color:#75715e">//600초동안 유효한 쿠키
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 response<span style="color:#f92672">.</span><span style="color:#a6e22e">addCookie</span><span style="color:#f92672">(</span>cookie<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//redirect 편의 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">redirect</span><span style="color:#f92672">(</span>HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		 <span style="color:#75715e">//Status Code 302
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 <span style="color:#75715e">//Location: /basic/hello-form.html
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 <span style="color:#75715e">//response.setStatus(HttpServletResponse.SC_FOUND); //302
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 <span style="color:#75715e">//response.setHeader(&#34;Location&#34;, &#34;/basic/hello-form.html&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		 response<span style="color:#f92672">.</span><span style="color:#a6e22e">sendRedirect</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/basic/hello-form.html&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>개발자 도구에서 내가 지정한 응답 정보들을 볼 수 있다.</li>
+</ul>
+<p><img src="/image/f12_header.PNG" alt="f12_header"></p>
+<h3 id="2-httpservletresponse-응답-데이터">2. HttpServletResponse 응답 데이터</h3>
+<ul>
+<li>ResponseHtmlServlet 클래스 만들어서 HTML로 데이터 보내보기</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.basic.reponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.PrintWriter<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.annotation.WebServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;responseHtmlServlet&#34;</span><span style="color:#f92672">,</span> urlPatterns <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/response-html&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResponseHtmlServlet</span> <span style="color:#66d9ef">extends</span> HttpServlet<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//Content-Type: text/html;charset=utf-8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setContentType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;text/html&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setCharacterEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;utf-8&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		PrintWriter writer <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span><span style="color:#a6e22e">getWriter</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		writer<span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&lt;html&gt;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		writer<span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&lt;body&gt;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		writer<span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34; &lt;div&gt;안녕?&lt;/div&gt;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		writer<span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&lt;/body&gt;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		writer<span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&lt;/html&gt;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>브라우저에서 HTML 응답 확인</li>
+</ul>
+<p><img src="/image/html_response.PNG" alt="html_response"></p>
+<ul>
+<li>ResponseJsonServlet 클래스 만들어서 JSON으로 데이터 보내보기 (Servlet 3에서 만든 HelloData 클래스 사용)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.basic.reponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.fasterxml.jackson.databind.ObjectMapper<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.basic.HelloData<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.annotation.WebServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;responseJsonServlet&#34;</span><span style="color:#f92672">,</span> urlPatterns <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/response-json&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResponseJsonServlet</span> <span style="color:#66d9ef">extends</span> HttpServlet<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> ObjectMapper objectMapper <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectMapper<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//Content-Type: text/html;charset=utf-8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setContentType</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;application/json&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">setCharacterEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;utf-8&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		HelloData helloData <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelloData<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		helloData<span style="color:#f92672">.</span><span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span><span style="color:#ae81ff">20</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		helloData<span style="color:#f92672">.</span><span style="color:#a6e22e">setUsername</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;aroong&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//{&#34;username&#34;:&#34;aroong&#34;,&#34;age&#34;:20}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		String result <span style="color:#f92672">=</span> objectMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">writeValueAsString</span><span style="color:#f92672">(</span>helloData<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		response<span style="color:#f92672">.</span><span style="color:#a6e22e">getWriter</span><span style="color:#f92672">().</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>result<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>브라우저에서 JSON 응답 확인</li>
+</ul>
+<p><img src="/image/json_response.PNG" alt="json_response"></p>
+
+    </div>
+</div><div style="margin-top:200px;">
+  <script src="https://utteranc.es/client.js"
+        repo="Aroong/blog-comments"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+	</script>
+</div><br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            Posted by
+            <a class="has-text-light" href="https://github.com/Aroong" target="_blank">
+            Aroong</a>🥰
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
