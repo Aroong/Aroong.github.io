@@ -2,37 +2,41 @@
 <html lang="en-us">
 
 <head><title>
-    Servlet 6 - JSP로 회원관리 만들어보기 | 
+    MVC 1 - MVC 패턴 적용 | 
     
     Aroong&#39;s Blog</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="앞서 서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)
+<meta name="description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
 1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.
     ">
 
 
-<meta property="og:title" content="Servlet 6 - JSP로 회원관리 만들어보기" />
-<meta property="og:description" content="앞서 서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)
+<meta property="og:title" content="MVC 1 - MVC 패턴 적용" />
+<meta property="og:description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
 1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://aroong.github.io/spring-mvc/6.-servlet6/" /><meta property="article:section" content="Spring MVC" />
-<meta property="article:published_time" content="2023-01-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-01-10T00:00:00+00:00" />
+<meta property="og:url" content="https://aroong.github.io/spring-mvc/7.-mvc1/" /><meta property="article:section" content="Spring MVC" />
+<meta property="article:published_time" content="2023-01-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-11T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Servlet 6 - JSP로 회원관리 만들어보기"/>
-<meta name="twitter:description" content="앞서 서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)
+<meta name="twitter:title" content="MVC 1 - MVC 패턴 적용"/>
+<meta name="twitter:description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
 1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다."/>
 
-<meta itemprop="name" content="Servlet 6 - JSP로 회원관리 만들어보기">
-<meta itemprop="description" content="앞서 서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)
-1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다."><meta itemprop="datePublished" content="2023-01-10T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-01-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="334">
-<meta itemprop="keywords" content="Servlet," />
-<link rel="canonical" href="https://aroong.github.io/spring-mvc/6.-servlet6/" />
+<meta itemprop="name" content="MVC 1 - MVC 패턴 적용">
+<meta itemprop="description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
+1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다."><meta itemprop="datePublished" content="2023-01-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-01-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="339">
+<meta itemprop="keywords" content="MVC패턴," />
+<link rel="canonical" href="https://aroong.github.io/spring-mvc/7.-mvc1/" />
 
 <link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
 
@@ -110,13 +114,13 @@
         <div id="page-body" class="column is-7">
 
 <div class="content blog">
-    <h1>Servlet 6 - JSP로 회원관리 만들어보기</h1>
+    <h1>MVC 1 - MVC 패턴 적용</h1>
 
     <div id="infobar" class="level is-mobile">
         <div class="level-left">
             
             <div class="level-item">
-                <p class="subtitle info date">Jan 10, 2023
+                <p class="subtitle info date">Jan 11, 2023
                 </p>
             </div>
             
@@ -130,7 +134,7 @@
         <div class="level-right is-hidden-touch">
             <div class="tags">
                 
-                <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+                <a class="tag is-dark is-rounded" href="/tags/mvc%ED%8C%A8%ED%84%B4">MVC패턴</a>
                 
             </div>
         </div>
@@ -138,14 +142,15 @@
 
     <div class="tags is-hidden-desktop">
         
-        <a class="tag is-dark is-rounded" href="/tags/servlet">Servlet</a>
+        <a class="tag is-dark is-rounded" href="/tags/mvc%ED%8C%A8%ED%84%B4">Mvc패턴</a>
         
     </div>
 
     <div class="blog-text">
         
 
-        <p>앞서 서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)</p>
+        <p>이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.<br>
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.</p>
 <h3 id="1-스프링부트-프로젝트에-jsp라이브러리-추가">1. 스프링부트 프로젝트에 JSP라이브러리 추가</h3>
 <ul>
 <li>스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다.</li>

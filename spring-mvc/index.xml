@@ -6,33 +6,22 @@
     <description>Recent content in Spring MVC on Aroong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/spring-mvc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/spring-mvc/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Servlet 1 - Servlet 기본</title>
-      <link>https://aroong.github.io/spring-mvc/1.-servlet1/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <title>MVC 1 - MVC 패턴 적용</title>
+      <link>https://aroong.github.io/spring-mvc/7.-mvc1/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aroong.github.io/spring-mvc/1.-servlet1/</guid>
-      <description>스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
-정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)
-스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
-[서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고</description>
-    </item>
-    
-    <item>
-      <title>Servlet 2 - HttpServletRequest</title>
-      <link>https://aroong.github.io/spring-mvc/2.-servlet2/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://aroong.github.io/spring-mvc/2.-servlet2/</guid>
-      <description>Servlet 1 내용에 이어 이번에는 HttpServletRequest에 대해 좀 더 자세히 들여다 봄. (인프런 강의 듣는 중)
-[HttpServletRequest 역할] HTTP 요청 메시지를 개발자가 직접 파싱해서 사용해도 되지만, 매우 불편할 것이다. 서블릿은 개발자가 HTTP 요청 메시지를 편리하게 사용할 수 있도록 개발자 대신에 HTTP 요청 메시지를 파싱한다.</description>
+      <guid>https://aroong.github.io/spring-mvc/7.-mvc1/</guid>
+      <description>이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
+1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &amp;gt; Gradle &amp;gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.</description>
     </item>
     
     <item>
       <title>Servlet 3 - HTTP 요청 방식</title>
       <link>https://aroong.github.io/spring-mvc/3.-servlet3/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/spring-mvc/3.-servlet3/</guid>
       <description>Servlet 2에 이어 HTTP 요청 메시지를 클라이언트에서 서버로 전달하는데 사용하는 방식 3가지에 대해 알아보자. (인프런 강의 듣는 중)
@@ -42,7 +31,7 @@
     <item>
       <title>Servlet 4 - HttpServletResponse</title>
       <link>https://aroong.github.io/spring-mvc/4.-servlet4/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/spring-mvc/4.-servlet4/</guid>
       <description>HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)
@@ -53,7 +42,7 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
     <item>
       <title>Servlet 5 - 서블릿으로 회원관리 만들어보기</title>
       <link>https://aroong.github.io/spring-mvc/5.-servlet5/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/spring-mvc/5.-servlet5/</guid>
       <description>순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
@@ -65,11 +54,33 @@ package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter;
     <item>
       <title>Servlet 6 - JSP로 회원관리 만들어보기</title>
       <link>https://aroong.github.io/spring-mvc/6.-servlet6/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/spring-mvc/6.-servlet6/</guid>
       <description>앞서 서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)
 1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &amp;gt; Gradle &amp;gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 2 - HttpServletRequest</title>
+      <link>https://aroong.github.io/spring-mvc/2.-servlet2/</link>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/spring-mvc/2.-servlet2/</guid>
+      <description>Servlet 1 내용에 이어 이번에는 HttpServletRequest에 대해 좀 더 자세히 들여다 봄. (인프런 강의 듣는 중)
+[HttpServletRequest 역할] HTTP 요청 메시지를 개발자가 직접 파싱해서 사용해도 되지만, 매우 불편할 것이다. 서블릿은 개발자가 HTTP 요청 메시지를 편리하게 사용할 수 있도록 개발자 대신에 HTTP 요청 메시지를 파싱한다.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 1 - Servlet 기본</title>
+      <link>https://aroong.github.io/spring-mvc/1.-servlet1/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/spring-mvc/1.-servlet1/</guid>
+      <description>스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
+[서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고</description>
     </item>
     
   </channel>

@@ -6,11 +6,11 @@
     <description>Recent content in HttpServletRequest on Aroong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/tags/httpservletrequest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/tags/httpservletrequest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Servlet 2 - HttpServletRequest</title>
       <link>https://aroong.github.io/spring-mvc/2.-servlet2/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/spring-mvc/2.-servlet2/</guid>
       <description>Servlet 1 내용에 이어 이번에는 HttpServletRequest에 대해 좀 더 자세히 들여다 봄. (인프런 강의 듣는 중)

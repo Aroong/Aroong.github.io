@@ -6,20 +6,20 @@
     <description>Recent content in Tags on Aroong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>HttpServletRequest</title>
-      <link>https://aroong.github.io/tags/httpservletrequest/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <title>MVC패턴</title>
+      <link>https://aroong.github.io/tags/mvc%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aroong.github.io/tags/httpservletrequest/</guid>
+      <guid>https://aroong.github.io/tags/mvc%ED%8C%A8%ED%84%B4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HttpServletResponse</title>
       <link>https://aroong.github.io/tags/httpservletresponse/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/tags/httpservletresponse/</guid>
       <description></description>
@@ -28,9 +28,18 @@
     <item>
       <title>Servlet</title>
       <link>https://aroong.github.io/tags/servlet/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/tags/servlet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HttpServletRequest</title>
+      <link>https://aroong.github.io/tags/httpservletrequest/</link>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/tags/httpservletrequest/</guid>
       <description></description>
     </item>
     
