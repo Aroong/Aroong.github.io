@@ -139,6 +139,8 @@
 
 
 
+
+
 <div class="columns is-centered has-text-centered">
     <div class="column is-10">
         <div class="content">
@@ -156,6 +158,12 @@
                 <a href="/tags/httpservletresponse">
                     <span class="tag is-dark is-large is-rounded">
                         Httpservletresponse
+                    </span>
+                </a>
+                
+                <a href="/tags/mvc-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC">
+                    <span class="tag is-dark is-large is-rounded">
+                        Mvc 프레임워크
                     </span>
                 </a>
                 
@@ -190,6 +198,65 @@
             </a>
         </div>
         <div class="blog-brief">
+    <a href="/spring-mvc/8.-mvcframework1/">
+        <h3 class="title is-4">
+            MVC 프레임워크 1
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/spring-mvc/8.-mvcframework1/">
+                    <p class="subtitle info date">Jan 16, 2023
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/spring-mvc/8.-mvcframework1/">
+                    <p class="subtitle info">
+                        5 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/mvc-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC">MVC 프레임워크</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/spring-mvc/8.-mvcframework1/">
+                <p class="summary">
+                    이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
+1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/spring-mvc/8.-mvcframework1/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
     <a href="/spring-mvc/7.-mvc1/">
         <h3 class="title is-4">
             MVC 1 - MVC 패턴 적용
@@ -202,7 +269,7 @@
             
             <div class="level-item">
                 <a href="/spring-mvc/7.-mvc1/">
-                    <p class="subtitle info date">Jan 11, 2023
+                    <p class="subtitle info date">Jan 16, 2023
                     </p>
                 </a>
             </div>
@@ -212,7 +279,7 @@
             <div class="level-item">
                 <a href="/spring-mvc/7.-mvc1/">
                     <p class="subtitle info">
-                        5 mins read
+                        7 mins read
                     </p>
                 </a>
             </div>
@@ -232,7 +299,7 @@
                 <p class="summary">
                     이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
 모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
-1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.
+1. 컨트롤러 뷰 분리하기. 클라이언트의 요청은 무조건 컨트롤러를 거치도록 한다. hello.servlet.web 아래 servletmvc 패키지를 만들고 회원 등록용 컨트롤러 MvcMemberFormServlet를 만든다.
                     
                 </p>
             </a>
@@ -423,64 +490,6 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
         </div>
         <div class="level-right">
             <a href="/spring-mvc/4.-servlet4/">Continue reading <i class="fa fa-angle-double-right"
-                    aria-hidden="true"></i></a>
-        </div>
-    </div>
-    <hr>
-</div><div class="blog-brief">
-    <a href="/spring-mvc/3.-servlet3/">
-        <h3 class="title is-4">
-            Servlet 3 - HTTP 요청 방식
-        </h3>
-    </a>
-
-    <div class="level is-mobile details">
-        <div class="level-left">
-
-            
-            <div class="level-item">
-                <a href="/spring-mvc/3.-servlet3/">
-                    <p class="subtitle info date">Jan 10, 2023
-                    </p>
-                </a>
-            </div>
-            
-
-
-            <div class="level-item">
-                <a href="/spring-mvc/3.-servlet3/">
-                    <p class="subtitle info">
-                        6 mins read
-                    </p>
-                </a>
-            </div>
-        </div>
-        <div class="level-right is-hidden-touch">
-            
-            <a class="tag is-rounded" href="/tags/servlet">Servlet</a>
-            
-        </div>
-    </div>
-
-    <div>
-        
-
-        <div>
-            <a href="/spring-mvc/3.-servlet3/">
-                <p class="summary">
-                    Servlet 2에 이어 HTTP 요청 메시지를 클라이언트에서 서버로 전달하는데 사용하는 방식 3가지에 대해 알아보자. (인프런 강의 듣는 중)
-[HTTP 요청 데이터 3가지 방법] GET - 쿼리 파라미터 POST - HTML Form HTTP message body (API) 1. GET - 쿼리 파라미터 hello.
-                    
-                </p>
-            </a>
-        </div>
-    </div>
-
-    <div class="level is-mobile continue-reading">
-        <div class="level-left">
-        </div>
-        <div class="level-right">
-            <a href="/spring-mvc/3.-servlet3/">Continue reading <i class="fa fa-angle-double-right"
                     aria-hidden="true"></i></a>
         </div>
     </div>

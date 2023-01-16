@@ -6,13 +6,24 @@
     <description>Recent content in Spring MVC on Aroong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/spring-mvc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/spring-mvc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MVC 1 - MVC 패턴 적용</title>
       <link>https://aroong.github.io/spring-mvc/7.-mvc1/</link>
-      <pubDate>Wed, 11 Jan 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/spring-mvc/7.-mvc1/</guid>
+      <description>이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
+1. 컨트롤러 뷰 분리하기. 클라이언트의 요청은 무조건 컨트롤러를 거치도록 한다. hello.servlet.web 아래 servletmvc 패키지를 만들고 회원 등록용 컨트롤러 MvcMemberFormServlet를 만든다.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 1</title>
+      <link>https://aroong.github.io/spring-mvc/8.-mvcframework1/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/spring-mvc/8.-mvcframework1/</guid>
       <description>이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
 모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
 1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &amp;gt; Gradle &amp;gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.</description>
