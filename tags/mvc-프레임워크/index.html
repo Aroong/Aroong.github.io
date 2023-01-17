@@ -117,7 +117,7 @@
             
             <div class="level-item">
                 <a href="/spring-mvc/8.-mvcframework1/">
-                    <p class="subtitle info date">Jan 16, 2023
+                    <p class="subtitle info date">Jan 17, 2023
                     </p>
                 </a>
             </div>
@@ -127,7 +127,7 @@
             <div class="level-item">
                 <a href="/spring-mvc/8.-mvcframework1/">
                     <p class="subtitle info">
-                        5 mins read
+                        4 mins read
                     </p>
                 </a>
             </div>
@@ -145,9 +145,7 @@
         <div>
             <a href="/spring-mvc/8.-mvcframework1/">
                 <p class="summary">
-                    이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
-모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
-1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.
+                    1. 프론트 컨트롤러 패턴 클라이언트의 요청을 받는 프론트컨트롤러를 하나 만들고 그 프론트컨트롤러가 요청에 맞는 컨트롤러를 찾아서 호출해준다. 입구를 하나로 하여 공통로직을 수행한다. 프론트컨트롤러를 제외한 나머지 컨트롤러들은 서블릿을 수행하지 않아도 된다. 스프링MVC의 DispatcherServlet이 이 FrontController패턴으로 구현되어있다. (인프런 수업 듣는중) 2. 프론트 컨트롤러 도입 - Version 1 이름을 v1로 하여 이전에 MVC로 만든 회원관리 로직에 프론트 컨트롤러를 도입시켜 보자.
                     
                 </p>
             </a>
@@ -159,6 +157,63 @@
         </div>
         <div class="level-right">
             <a href="/spring-mvc/8.-mvcframework1/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="/spring-mvc/9.-mvcframework2/">
+        <h3 class="title is-4">
+            MVC 프레임워크 2
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="/spring-mvc/9.-mvcframework2/">
+                    <p class="subtitle info date">Jan 17, 2023
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="/spring-mvc/9.-mvcframework2/">
+                    <p class="subtitle info">
+                        4 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="/tags/mvc-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC">MVC 프레임워크</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="/spring-mvc/9.-mvcframework2/">
+                <p class="summary">
+                    1. 프론트 컨트롤러 Version 2 - View 분리 뷰로 이동하는 부분이 중복되기 때문에 따로 분리하여 객체를 만든다. 뷰 객체는 이후 다른 버전에서도 계속 사용할거기 때문에 frontcontroller 패키지에 MyView로 만든다. (인프런 수업 듣는중) package hello.servlet.web.frontcontroller; import java.io.IOException; import jakarta.servlet.RequestDispatcher; import jakarta.servlet.ServletException; import jakarta.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="/spring-mvc/9.-mvcframework2/">Continue reading <i class="fa fa-angle-double-right"
                     aria-hidden="true"></i></a>
         </div>
     </div>

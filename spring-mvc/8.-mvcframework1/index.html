@@ -8,33 +8,25 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
-모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
-1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.
+<meta name="description" content="1. 프론트 컨트롤러 패턴 클라이언트의 요청을 받는 프론트컨트롤러를 하나 만들고 그 프론트컨트롤러가 요청에 맞는 컨트롤러를 찾아서 호출해준다. 입구를 하나로 하여 공통로직을 수행한다. 프론트컨트롤러를 제외한 나머지 컨트롤러들은 서블릿을 수행하지 않아도 된다. 스프링MVC의 DispatcherServlet이 이 FrontController패턴으로 구현되어있다. (인프런 수업 듣는중) 2. 프론트 컨트롤러 도입 - Version 1 이름을 v1로 하여 이전에 MVC로 만든 회원관리 로직에 프론트 컨트롤러를 도입시켜 보자.
     ">
 
 
 <meta property="og:title" content="MVC 프레임워크 1" />
-<meta property="og:description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
-모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
-1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다." />
+<meta property="og:description" content="1. 프론트 컨트롤러 패턴 클라이언트의 요청을 받는 프론트컨트롤러를 하나 만들고 그 프론트컨트롤러가 요청에 맞는 컨트롤러를 찾아서 호출해준다. 입구를 하나로 하여 공통로직을 수행한다. 프론트컨트롤러를 제외한 나머지 컨트롤러들은 서블릿을 수행하지 않아도 된다. 스프링MVC의 DispatcherServlet이 이 FrontController패턴으로 구현되어있다. (인프런 수업 듣는중) 2. 프론트 컨트롤러 도입 - Version 1 이름을 v1로 하여 이전에 MVC로 만든 회원관리 로직에 프론트 컨트롤러를 도입시켜 보자." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aroong.github.io/spring-mvc/8.-mvcframework1/" /><meta property="article:section" content="Spring MVC" />
-<meta property="article:published_time" content="2023-01-16T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-01-16T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-17T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MVC 프레임워크 1"/>
-<meta name="twitter:description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
-모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
-1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다."/>
+<meta name="twitter:description" content="1. 프론트 컨트롤러 패턴 클라이언트의 요청을 받는 프론트컨트롤러를 하나 만들고 그 프론트컨트롤러가 요청에 맞는 컨트롤러를 찾아서 호출해준다. 입구를 하나로 하여 공통로직을 수행한다. 프론트컨트롤러를 제외한 나머지 컨트롤러들은 서블릿을 수행하지 않아도 된다. 스프링MVC의 DispatcherServlet이 이 FrontController패턴으로 구현되어있다. (인프런 수업 듣는중) 2. 프론트 컨트롤러 도입 - Version 1 이름을 v1로 하여 이전에 MVC로 만든 회원관리 로직에 프론트 컨트롤러를 도입시켜 보자."/>
 
 <meta itemprop="name" content="MVC 프레임워크 1">
-<meta itemprop="description" content="이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
-모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
-1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다."><meta itemprop="datePublished" content="2023-01-16T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-01-16T00:00:00+00:00" />
-<meta itemprop="wordCount" content="339">
+<meta itemprop="description" content="1. 프론트 컨트롤러 패턴 클라이언트의 요청을 받는 프론트컨트롤러를 하나 만들고 그 프론트컨트롤러가 요청에 맞는 컨트롤러를 찾아서 호출해준다. 입구를 하나로 하여 공통로직을 수행한다. 프론트컨트롤러를 제외한 나머지 컨트롤러들은 서블릿을 수행하지 않아도 된다. 스프링MVC의 DispatcherServlet이 이 FrontController패턴으로 구현되어있다. (인프런 수업 듣는중) 2. 프론트 컨트롤러 도입 - Version 1 이름을 v1로 하여 이전에 MVC로 만든 회원관리 로직에 프론트 컨트롤러를 도입시켜 보자."><meta itemprop="datePublished" content="2023-01-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-01-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="404">
 <meta itemprop="keywords" content="MVC 프레임워크," />
 <link rel="canonical" href="https://aroong.github.io/spring-mvc/8.-mvcframework1/" />
 
@@ -120,14 +112,14 @@
         <div class="level-left">
             
             <div class="level-item">
-                <p class="subtitle info date">Jan 16, 2023
+                <p class="subtitle info date">Jan 17, 2023
                 </p>
             </div>
             
 
             <div class="level-item">
                 <p class="subtitle info">
-                    5 mins read
+                    4 mins read
                 </p>
             </div>
         </div>
@@ -149,116 +141,180 @@
     <div class="blog-text">
         
 
-        <p>이제 앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.<br>
-모델은 HttpServletRequest객체의 request 저장소로 보면 된다.</p>
-<h3 id="1-스프링부트-프로젝트에-jsp라이브러리-추가">1. 스프링부트 프로젝트에 JSP라이브러리 추가</h3>
+        <h3 id="1-프론트-컨트롤러-패턴">1. 프론트 컨트롤러 패턴</h3>
 <ul>
-<li>스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다.</li>
-<li>추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.</li>
+<li>클라이언트의 요청을 받는 프론트컨트롤러를 하나 만들고 그 프론트컨트롤러가 요청에 맞는 컨트롤러를 찾아서 호출해준다.</li>
+<li>입구를 하나로 하여 공통로직을 수행한다.</li>
+<li>프론트컨트롤러를 제외한 나머지 컨트롤러들은 서블릿을 수행하지 않아도 된다.</li>
+<li>스프링MVC의 DispatcherServlet이 이 FrontController패턴으로 구현되어있다.</li>
+<li>(인프런 수업 듣는중)</li>
 </ul>
-<pre tabindex="0"><code>implementation(&#34;org.apache.tomcat.embed:tomcat-embed-jasper&#34;)
-implementation(&#34;jakarta.servlet:jakarta.servlet-api&#34;)
-implementation(&#34;jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api&#34;)
-implementation(&#34;org.glassfish.web:jakarta.servlet.jsp.jstl&#34;)
-</code></pre><h3 id="2-jsp로-회원관리-만들어보기">2. JSP로 회원관리 만들어보기</h3>
+<h3 id="2-프론트-컨트롤러-도입---version-1">2. 프론트 컨트롤러 도입 - Version 1</h3>
 <ul>
-<li>weapp 폴더 아래 jsp&gt;members 폴더를 만들어주고 new-form.jsp 생성한다. 서블릿의 MemberFormServlet 기능과 같다.</li>
+<li>이름을 v1로 하여 이전에 MVC로 만든 회원관리 로직에 프론트 컨트롤러를 도입시켜 보자.</li>
+<li>hello.servlet.web.frontcontroller.v1 패키지를 만들고 서블릿 컨트롤러 형태의 인터페이스 ControllerV1을 생성한다.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page contentType=&#34;text/html;charset=UTF-8&#34; language=&#34;java&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">title</span>&gt;Title&lt;/<span style="color:#f92672">title</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/jsp/members/save.jsp&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>	 username: &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;username&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>	 age: &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;age&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>	 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span>&gt;전송&lt;/<span style="color:#f92672">button</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
-</span></span></code></pre></div><ul>
-<li>회원 저장을 위해 jsp&gt;members 폴더에 save.jsp 생성한다. 서블릿의 MemberSaveServlet 기능과 같다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page import=&#34;hello.servlet.domain.member.MemberRepository&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page import=&#34;hello.servlet.domain.member.Member&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page contentType=&#34;text/html;charset=UTF-8&#34; language=&#34;java&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%
-</span></span><span style="display:flex;"><span>	 // request, response JSP에서는 선언없이 사용 가능
-</span></span><span style="display:flex;"><span>	 MemberRepository memberRepository = MemberRepository.getInstance();
-</span></span><span style="display:flex;"><span>	 System.out.println(&#34;save.jsp&#34;);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ControllerV1</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">porcess</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>	 
-</span></span><span style="display:flex;"><span>	 String username = request.getParameter(&#34;username&#34;);
-</span></span><span style="display:flex;"><span>	 int age = Integer.parseInt(request.getParameter(&#34;age&#34;));
-</span></span><span style="display:flex;"><span>	 
-</span></span><span style="display:flex;"><span>	 Member member = new Member(username, age);
-</span></span><span style="display:flex;"><span>	 System.out.println(&#34;member = &#34; + member);
-</span></span><span style="display:flex;"><span>	 
-</span></span><span style="display:flex;"><span>	 memberRepository.save(member);
-</span></span><span style="display:flex;"><span>%&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>성공
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;id=<span style="color:#960050;background-color:#1e0010">&lt;</span>%=member.getId()%&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;username=<span style="color:#960050;background-color:#1e0010">&lt;</span>%=member.getUsername()%&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;age=<span style="color:#960050;background-color:#1e0010">&lt;</span>%=member.getAge()%&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/index.html&#34;</span>&gt;메인&lt;/<span style="color:#f92672">a</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
-<li>jsp폴더에 members.jsp를 만든다. 서블릿의 MemerListServlet 기능과 같다.</li>
+<li>hello.servlet.web.frontcontroller.v1.controller 패키지에 회원 등록 컨트롤러 MemberFormControllerV1를 생성한다.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page import=&#34;java.util.List&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page import=&#34;hello.servlet.domain.member.MemberRepository&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page import=&#34;hello.servlet.domain.member.Member&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%@ page contentType=&#34;text/html;charset=UTF-8&#34; language=&#34;java&#34; %&gt;
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;</span>%
-</span></span><span style="display:flex;"><span> 	MemberRepository memberRepository = MemberRepository.getInstance();
-</span></span><span style="display:flex;"><span> 	List&lt;<span style="color:#f92672">Member</span>&gt; members = memberRepository.findAll();
-</span></span><span style="display:flex;"><span>%&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">title</span>&gt;Title&lt;/<span style="color:#f92672">title</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/index.html&#34;</span>&gt;메인&lt;/<span style="color:#f92672">a</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">table</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">thead</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">th</span>&gt;id&lt;/<span style="color:#f92672">th</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">th</span>&gt;username&lt;/<span style="color:#f92672">th</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">th</span>&gt;age&lt;/<span style="color:#f92672">th</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">thead</span>&gt;
-</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>	<span style="color:#960050;background-color:#1e0010">&lt;</span>%
-</span></span><span style="display:flex;"><span>	 for (Member member : members) {
-</span></span><span style="display:flex;"><span>		 out.write(&#34; &lt;<span style="color:#f92672">tr</span>&gt;&#34;);
-</span></span><span style="display:flex;"><span>		 out.write(&#34; &lt;<span style="color:#f92672">td</span>&gt;&#34; + member.getId() + &#34;&lt;/<span style="color:#f92672">td</span>&gt;&#34;);
-</span></span><span style="display:flex;"><span>		 out.write(&#34; &lt;<span style="color:#f92672">td</span>&gt;&#34; + member.getUsername() + &#34;&lt;/<span style="color:#f92672">td</span>&gt;&#34;);
-</span></span><span style="display:flex;"><span>		 out.write(&#34; &lt;<span style="color:#f92672">td</span>&gt;&#34; + member.getAge() + &#34;&lt;/<span style="color:#f92672">td</span>&gt;&#34;);
-</span></span><span style="display:flex;"><span>		 out.write(&#34; &lt;/<span style="color:#f92672">tr</span>&gt;&#34;);
-</span></span><span style="display:flex;"><span>	 }
-</span></span><span style="display:flex;"><span>	%&gt;
-</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">table</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v1.controller<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v1.ControllerV1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.RequestDispatcher<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberFormControllerV1</span> <span style="color:#66d9ef">implements</span> ControllerV1 <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">porcess</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		String viewPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/WEB-INF/views/new-form.jsp&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		RequestDispatcher dispatcher <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestDispatcher</span><span style="color:#f92672">(</span>viewPath<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		dispatcher<span style="color:#f92672">.</span><span style="color:#a6e22e">forward</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
-<li><code>http://localhost:8080/jsp/members/new-form.jsp</code> 접속해보면 전에 서블릿으로 만든것과 같은 동작을 하는걸 확인할 수 있다.</li>
+<li>hello.servlet.web.frontcontroller.v1.controller 패키지에 회원 저장 컨트롤러 MemberSaveControllerV1 생성한다.</li>
 </ul>
-<h3 id="3-서블릿과-jsp를-해보며">3. 서블릿과 JSP를 해보며</h3>
-<ul>
-<li>옛날옛적 업무할 때 꽤 오랜기간 JSP로 개발했었는데 유지보수가 정말 힘들었었다. 소스가 길어질 수록 JSP위쪽에 비지니스 로직 고치랴 아래쪽으로 가서 화면단 수정하랴&hellip;
-정말 눈알 빠질 뻔 한적이 많았는데&hellip;😂<br>
-이제는 이 JSP기술도 다 사장됬다고 하니 뭔가 내가 이렇게 옛날 사람이구나 싶으면서도 바뀌는게 당연하다고 생각 되고 그렇다.<br>
-오랫동안 같은 직장 같은 업무만 하다보니 내 기술은 거기서 멈춰있는데&hellip;(무려 jdk1.5 시절ㅋㅋㅋ)<br>
-공부 열심히 해서 요즘 기술 좀 익혀보자.🤯</li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v1.controller<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.Member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.MemberRepository<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v1.ControllerV1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.RequestDispatcher<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberSaveControllerV1</span> <span style="color:#66d9ef">implements</span> ControllerV1<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> MemberRepository memberRepository <span style="color:#f92672">=</span> MemberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">porcess</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		String username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		Member member <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Member<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> age<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>member<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//Model에 데이터 보관
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		request<span style="color:#f92672">.</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;member&#34;</span><span style="color:#f92672">,</span> member<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		String viewPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/WEB-INF/views/save-result.jsp&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		RequestDispatcher dispatcher <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestDispatcher</span><span style="color:#f92672">(</span>viewPath<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		dispatcher<span style="color:#f92672">.</span><span style="color:#a6e22e">forward</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>hello.servlet.web.frontcontroller.v1.controller 패키지에 회원 목록 컨트롤러 MemberListControllerV1 생성한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v1.controller<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.Member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.MemberRepository<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v1.ControllerV1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.RequestDispatcher<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberListControllerV1</span> <span style="color:#66d9ef">implements</span> ControllerV1<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> MemberRepository memberRepository <span style="color:#f92672">=</span> MemberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">porcess</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		List<span style="color:#f92672">&lt;</span>Member<span style="color:#f92672">&gt;</span> members <span style="color:#f92672">=</span> memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findAll</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		request<span style="color:#f92672">.</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;members&#34;</span><span style="color:#f92672">,</span> members<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		String viewPath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/WEB-INF/views/members.jsp&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		RequestDispatcher dispatcher <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestDispatcher</span><span style="color:#f92672">(</span>viewPath<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		dispatcher<span style="color:#f92672">.</span><span style="color:#a6e22e">forward</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>이제 프론트 컨트롤러를 hello.servlet.web.frontcontroller.v1 패키지에 FrontControllerServletV1으로 생성한다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v1.controller.MemberFormControllerV1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v1.controller.MemberListControllerV1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v1.controller.MemberSaveControllerV1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.annotation.WebServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServlet<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//front-controller/v1/으로 들어오는 모든 요청을 컨트롤 한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;frontControllerServletV1&#34;</span><span style="color:#f92672">,</span> urlPatterns <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/front-controller/v1/*&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FrontControllerServletV1</span> <span style="color:#66d9ef">extends</span> HttpServlet <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> ControllerV1<span style="color:#f92672">&gt;</span> controllerMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">FrontControllerServletV1</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>		controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v1/members/new-form&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberFormControllerV1<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>		controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v1/members/save&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberSaveControllerV1<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>		controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v1/members&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberListControllerV1<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;FrontControllerServletV1.service&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		String requestURI <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestURI</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//다형성 사용 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ControllerV1 controller <span style="color:#f92672">=</span> controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>requestURI<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>controller <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>			response<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span>HttpServletResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">SC_NOT_FOUND</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>	
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		controller<span style="color:#f92672">.</span><span style="color:#a6e22e">porcess</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>JSP는 이전에 만들어 두었던 것을 그대로 사용한다.</li>
+<li><code>http://localhost:8080/front-controller/v1/members</code> <br>
+<code>http://localhost:8080/front-controller/v1/members/new-form</code> <br>
+접속해보면 전에 MVC로 만든것과 같은 동작을 하는걸 확인할 수 있다.</li>
 </ul>
 
     </div>
