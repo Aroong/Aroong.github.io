@@ -8,47 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 27 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>MVC 프레임워크</title>
-      <link>https://aroong.github.io/tags/mvc-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC/</link>
+      <title>스프링MVC1</title>
+      <link>https://aroong.github.io/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1/</link>
       <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://aroong.github.io/tags/mvc-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MVC패턴</title>
-      <link>https://aroong.github.io/tags/mvc%ED%8C%A8%ED%84%B4/</link>
-      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://aroong.github.io/tags/mvc%ED%8C%A8%ED%84%B4/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HttpServletResponse</title>
-      <link>https://aroong.github.io/tags/httpservletresponse/</link>
-      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://aroong.github.io/tags/httpservletresponse/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Servlet</title>
-      <link>https://aroong.github.io/tags/servlet/</link>
-      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://aroong.github.io/tags/servlet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HttpServletRequest</title>
-      <link>https://aroong.github.io/tags/httpservletrequest/</link>
-      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://aroong.github.io/tags/httpservletrequest/</guid>
+      <guid>https://aroong.github.io/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1/</guid>
       <description></description>
     </item>
     
