@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Aroong&#39;s Blog</title>
+    <link>https://aroong.github.io/posts/</link>
+    <description>Recent content in Posts on Aroong&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MVC 프레임워크 3</title>
+      <link>https://aroong.github.io/posts/10.-mvcframework3/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/10.-mvcframework3/</guid>
+      <description>1. 프론트 컨트롤러 Version 3 - Model 추가 서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다.
+-&amp;gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.
+뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 4</title>
+      <link>https://aroong.github.io/posts/11.-mvcframework4/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/11.-mvcframework4/</guid>
+      <description>1. 프론트 컨트롤러 Version 4 서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다. -&amp;gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.
+뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다. 물리 위치는 프론트컨트롤러에서만 처리한다.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 5</title>
+      <link>https://aroong.github.io/posts/12.-mvcframework5/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/12.-mvcframework5/</guid>
+      <description>1. 프론트 컨트롤러 Version 4 서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다. -&amp;gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.
+뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다. 물리 위치는 프론트컨트롤러에서만 처리한다.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 1</title>
+      <link>https://aroong.github.io/posts/8.-mvcframework1/</link>
+      <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/8.-mvcframework1/</guid>
+      <description>1. 프론트 컨트롤러 패턴 클라이언트의 요청을 받는 프론트컨트롤러를 하나 만들고 그 프론트컨트롤러가 요청에 맞는 컨트롤러를 찾아서 호출해준다. 입구를 하나로 하여 공통로직을 수행한다. 프론트컨트롤러를 제외한 나머지 컨트롤러들은 서블릿을 수행하지 않아도 된다. 스프링MVC의 DispatcherServlet이 이 FrontController패턴으로 구현되어있다. (인프런 수업 듣는중) 2. 프론트 컨트롤러 도입 - Version 1 이름을 v1로 하여 이전에 MVC로 만든 회원관리 로직에 프론트 컨트롤러를 도입시켜 보자.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 2</title>
+      <link>https://aroong.github.io/posts/9.-mvcframework2/</link>
+      <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/9.-mvcframework2/</guid>
+      <description>1. 프론트 컨트롤러 Version 2 - View 분리 뷰로 이동하는 부분이 중복되기 때문에 따로 분리하여 객체를 만든다. 뷰 객체는 이후 다른 버전에서도 계속 사용할거기 때문에 frontcontroller 패키지에 MyView로 만든다. (인프런 수업 듣는중) package hello.servlet.web.frontcontroller; import java.io.IOException; import jakarta.servlet.RequestDispatcher; import jakarta.servlet.ServletException; import jakarta.</description>
+    </item>
+    
+    <item>
+      <title>MVC 1 - MVC 패턴 적용</title>
+      <link>https://aroong.github.io/posts/7.-mvc1/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/7.-mvc1/</guid>
+      <description>앞에서 만든 서블릿과 JSP를 사용하여 MVC 패턴을 적용해보자. 서블릿이 컨트롤러가 되고 JSP가 뷰가 된다.
+모델은 HttpServletRequest객체의 request 저장소로 보면 된다.
+1. 컨트롤러 뷰 분리하기. 클라이언트의 요청은 무조건 컨트롤러를 거치도록 한다. hello.servlet.web 아래 servletmvc 패키지를 만들고 회원 등록용 컨트롤러 MvcMemberFormServlet를 만든다. 클라이언트가 /servlet-mvc/members/new-form로 요청을 하면 new-form.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 3 - HTTP 요청 방식</title>
+      <link>https://aroong.github.io/posts/3.-servlet3/</link>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/3.-servlet3/</guid>
+      <description>Servlet 2에 이어 HTTP 요청 메시지를 클라이언트에서 서버로 전달하는데 사용하는 방식 3가지에 대해 알아보자. (인프런 강의 듣는 중)
+[HTTP 요청 데이터 3가지 방법] GET - 쿼리 파라미터 POST - HTML Form HTTP message body (API) 1. GET - 쿼리 파라미터 hello.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 4 - HttpServletResponse</title>
+      <link>https://aroong.github.io/posts/4.-servlet4/</link>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/4.-servlet4/</guid>
+      <description>HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)
+1. HttpServletResponse 기본 사용법 hello.servlet.basic아래 reponse 폴더를 만든 후 ResponseHeaderServlet 클래스를 생성하고 브라우저에서 요청이 있을때 응답을 어떻게 줄 수 있는지 확인한다.
+package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.servlet.ServletException; import jakarta.servlet.annotation.WebServlet; import jakarta.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 5 - 서블릿으로 회원관리 만들어보기</title>
+      <link>https://aroong.github.io/posts/5.-servlet5/</link>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/5.-servlet5/</guid>
+      <description>순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
+1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성 hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.
+Member 회원 도메인 모델
+package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter; @Getter @Setter public class Member { private Long id; private String username; private int age; public Member() { } public Member(String username, int age) { this.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 6 - JSP로 회원관리 만들어보기</title>
+      <link>https://aroong.github.io/posts/6.-servlet6/</link>
+      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/6.-servlet6/</guid>
+      <description>서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)
+1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &amp;gt; Gradle &amp;gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 2 - HttpServletRequest</title>
+      <link>https://aroong.github.io/posts/2.-servlet2/</link>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/2.-servlet2/</guid>
+      <description>Servlet 1 내용에 이어 이번에는 HttpServletRequest에 대해 좀 더 자세히 들여다 봄. (인프런 강의 듣는 중)
+[HttpServletRequest 역할] HTTP 요청 메시지를 개발자가 직접 파싱해서 사용해도 되지만, 매우 불편할 것이다. 서블릿은 개발자가 HTTP 요청 메시지를 편리하게 사용할 수 있도록 개발자 대신에 HTTP 요청 메시지를 파싱한다.</description>
+    </item>
+    
+    <item>
+      <title>Servlet 1 - Servlet 기본</title>
+      <link>https://aroong.github.io/posts/1.-servlet1/</link>
+      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/1.-servlet1/</guid>
+      <description>스프링 백앤드 공부를 하기위해 인프런 강의를 듣기 시작했다.
+정리 안해두면 다 까먹으니 시간이 걸리더라도 기록을 해봄. (이론 말고 실습 위주)
+스프링 MVC, 웹 백앤드를 익히기 위해 제일 기본이 되는 서블릿부터 시작해서 점점 올라갈 예정.
+[서블릿 프로젝트 생성] https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고</description>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>https://aroong.github.io/posts/0.-markdown-syntax/</link>
+      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/0.-markdown-syntax/</guid>
+      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
