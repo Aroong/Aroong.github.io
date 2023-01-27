@@ -14,7 +14,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/10.-mvcframework3/</loc>
+	    <loc>https://aroong.github.io/posts/10.-mvcframework3/</loc>
 	    <lastmod>2023-01-27</lastmod>
         
 
@@ -25,7 +25,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/11.-mvcframework4/</loc>
+	    <loc>https://aroong.github.io/posts/11.-mvcframework4/</loc>
 	    <lastmod>2023-01-27</lastmod>
         
 
@@ -36,7 +36,18 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/</loc>
+	    <loc>https://aroong.github.io/posts/12.-mvcframework5/</loc>
+	    <lastmod>2023-01-27</lastmod>
+        
+
+        
+	  </url>
+	  
+  
+      
+      
+	  <url>
+	    <loc>https://aroong.github.io/posts/</loc>
 	    <lastmod>2023-01-27</lastmod>
         
 
@@ -58,7 +69,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/8.-mvcframework1/</loc>
+	    <loc>https://aroong.github.io/posts/8.-mvcframework1/</loc>
 	    <lastmod>2023-01-17</lastmod>
         
 
@@ -69,7 +80,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/9.-mvcframework2/</loc>
+	    <loc>https://aroong.github.io/posts/9.-mvcframework2/</loc>
 	    <lastmod>2023-01-17</lastmod>
         
 
@@ -80,7 +91,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/7.-mvc1/</loc>
+	    <loc>https://aroong.github.io/posts/7.-mvc1/</loc>
 	    <lastmod>2023-01-16</lastmod>
         
 
@@ -124,7 +135,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/3.-servlet3/</loc>
+	    <loc>https://aroong.github.io/posts/3.-servlet3/</loc>
 	    <lastmod>2023-01-10</lastmod>
         
 
@@ -135,7 +146,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/4.-servlet4/</loc>
+	    <loc>https://aroong.github.io/posts/4.-servlet4/</loc>
 	    <lastmod>2023-01-10</lastmod>
         
 
@@ -146,7 +157,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/5.-servlet5/</loc>
+	    <loc>https://aroong.github.io/posts/5.-servlet5/</loc>
 	    <lastmod>2023-01-10</lastmod>
         
 
@@ -157,7 +168,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/6.-servlet6/</loc>
+	    <loc>https://aroong.github.io/posts/6.-servlet6/</loc>
 	    <lastmod>2023-01-10</lastmod>
         
 
@@ -179,7 +190,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/2.-servlet2/</loc>
+	    <loc>https://aroong.github.io/posts/2.-servlet2/</loc>
 	    <lastmod>2023-01-09</lastmod>
         
 
@@ -190,7 +201,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/spring-mvc/1.-servlet1/</loc>
+	    <loc>https://aroong.github.io/posts/1.-servlet1/</loc>
 	    <lastmod>2022-12-29</lastmod>
         
 
@@ -201,18 +212,7 @@
       
       
 	  <url>
-	    <loc>https://aroong.github.io/posts/1.-markdown-syntax/</loc>
-	    <lastmod>2020-04-16</lastmod>
-        
-
-        
-	  </url>
-	  
-  
-      
-      
-	  <url>
-	    <loc>https://aroong.github.io/posts/</loc>
+	    <loc>https://aroong.github.io/posts/0.-markdown-syntax/</loc>
 	    <lastmod>2020-04-16</lastmod>
         
 
