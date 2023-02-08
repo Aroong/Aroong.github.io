@@ -8,29 +8,33 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="1. 프론트 컨트롤러 Version 4 서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다. -&gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.
-뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다. 물리 위치는 프론트컨트롤러에서만 처리한다.
+<meta name="description" content="1. 프론트 컨트롤러 Version 5 어댑터 패턴 : 컨트롤러 종류를 선택해서 쓸 수 있게 개발할 수 있다.
+핸들러 : 컨트롤러를 더 넓은 범위의 핸들러로 변경한다. 컨트롤러 개념 뿐 아니라 어떤 종류는 해당하는 어댑터만 있느면 다 처리할 수 있기 때문.
+ControllerV3나 ControllerV4를 선택해서 사용할 수 있게 수정해본다.
     ">
 
 
 <meta property="og:title" content="MVC 프레임워크 5" />
-<meta property="og:description" content="1. 프론트 컨트롤러 Version 4 서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다. -&gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.
-뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다. 물리 위치는 프론트컨트롤러에서만 처리한다." />
+<meta property="og:description" content="1. 프론트 컨트롤러 Version 5 어댑터 패턴 : 컨트롤러 종류를 선택해서 쓸 수 있게 개발할 수 있다.
+핸들러 : 컨트롤러를 더 넓은 범위의 핸들러로 변경한다. 컨트롤러 개념 뿐 아니라 어떤 종류는 해당하는 어댑터만 있느면 다 처리할 수 있기 때문.
+ControllerV3나 ControllerV4를 선택해서 사용할 수 있게 수정해본다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aroong.github.io/posts/12.-mvcframework5/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-01-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-01-27T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-02-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-08T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MVC 프레임워크 5"/>
-<meta name="twitter:description" content="1. 프론트 컨트롤러 Version 4 서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다. -&gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.
-뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다. 물리 위치는 프론트컨트롤러에서만 처리한다."/>
+<meta name="twitter:description" content="1. 프론트 컨트롤러 Version 5 어댑터 패턴 : 컨트롤러 종류를 선택해서 쓸 수 있게 개발할 수 있다.
+핸들러 : 컨트롤러를 더 넓은 범위의 핸들러로 변경한다. 컨트롤러 개념 뿐 아니라 어떤 종류는 해당하는 어댑터만 있느면 다 처리할 수 있기 때문.
+ControllerV3나 ControllerV4를 선택해서 사용할 수 있게 수정해본다."/>
 
 <meta itemprop="name" content="MVC 프레임워크 5">
-<meta itemprop="description" content="1. 프론트 컨트롤러 Version 4 서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다. -&gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.
-뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다. 물리 위치는 프론트컨트롤러에서만 처리한다."><meta itemprop="datePublished" content="2023-01-27T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-01-27T00:00:00+00:00" />
-<meta itemprop="wordCount" content="667">
+<meta itemprop="description" content="1. 프론트 컨트롤러 Version 5 어댑터 패턴 : 컨트롤러 종류를 선택해서 쓸 수 있게 개발할 수 있다.
+핸들러 : 컨트롤러를 더 넓은 범위의 핸들러로 변경한다. 컨트롤러 개념 뿐 아니라 어떤 종류는 해당하는 어댑터만 있느면 다 처리할 수 있기 때문.
+ControllerV3나 ControllerV4를 선택해서 사용할 수 있게 수정해본다."><meta itemprop="datePublished" content="2023-02-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-02-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="534">
 <meta itemprop="keywords" content="스프링MVC1," />
 <link rel="canonical" href="https://aroong.github.io/posts/12.-mvcframework5/" />
 
@@ -114,14 +118,14 @@
         <div class="level-left">
             
             <div class="level-item">
-                <p class="subtitle info date">Jan 27, 2023
+                <p class="subtitle info date">Feb 8, 2023
                 </p>
             </div>
             
 
             <div class="level-item">
                 <p class="subtitle info">
-                    7 mins read
+                    6 mins read
                 </p>
             </div>
         </div>
@@ -143,157 +147,97 @@
     <div class="blog-text">
         
 
-        <h3 id="1-프론트-컨트롤러-version-4">1. 프론트 컨트롤러 Version 4</h3>
+        <h3 id="1-프론트-컨트롤러-version-5">1. 프론트 컨트롤러 Version 5</h3>
 <ul>
 <li>
-<p>서블릿 종속성 제거 : 요청 파라메터는 Map으로 받아서 처리하고 request 객체 대신 Model 객체를 구현한다. -&gt; 코드가 단순해지고 테스트, 수정이 쉬워진다.</p>
+<p>어댑터 패턴 : 컨트롤러 종류를 선택해서 쓸 수 있게 개발할 수 있다.</p>
 </li>
 <li>
-<p>뷰 이름 중복 제거 : 물리 위치 이름 대신 논리 이름을 받아서 처리한다. 물리 위치는 프론트컨트롤러에서만 처리한다.<br></p>
-<blockquote>
-<p>/WEB-INF/views/new-form.jsp <strong>-&gt; new-form</strong></p>
-</blockquote>
+<p>핸들러 : 컨트롤러를 더 넓은 범위의 핸들러로 변경한다. 컨트롤러 개념 뿐 아니라 어떤 종류는 해당하는 어댑터만 있느면 다 처리할 수 있기 때문.</p>
+</li>
+<li>
+<p>ControllerV3나 ControllerV4를 선택해서 사용할 수 있게 수정해본다.</p>
 </li>
 <li>
 <p>(인프런 수업 듣는중)</p>
 </li>
 <li>
-<p>hello.servlet.web.frontcontroller에 ModelView 객체를 만든다. 뷰이름과 뷰렌더링에 필요한 모델을 Map형태로 가져간다.</p>
+<p>hello.servlet.web.frontcontroller.v5 에 MyHandlerAdapter 생성. 어댑터 용 인터페이스.</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller<span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v5<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ModelView</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String viewName<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ModelView</span><span style="color:#f92672">(</span>String viewName<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">viewName</span> <span style="color:#f92672">=</span> viewName<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getViewName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> viewName<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setViewName</span><span style="color:#f92672">(</span>String viewName<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">viewName</span> <span style="color:#f92672">=</span> viewName<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getModel</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> model<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setModel</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> model<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">model</span> <span style="color:#f92672">=</span> model<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>hello.servlet.web.frontcontroller.v3 패키지에 컨트롤러 ControllerV3 인터페이스를 만든다.</li>
-<li>이 인터페이스를 사용하는 컨트롤러는 뷰 이름과 뷰에 전달할 Model 데이터를 포함하는 ModelView 객체를 반환한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v3<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.ModelView<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ControllerV3</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">MyHandlerAdapter</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	ModelView <span style="color:#a6e22e">process</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//handler는 컨트롤러를 말한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//어댑터가 해당 컨트롤러를 처리할 수 있는지 판단하는 메서드다
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>Object handler<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 어댑터는 실제 컨트롤러를 호출하고, 그 결과로 ModelView를 반환해야 한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 실제 컨트롤러가 ModelView를 반환하지 못하면, 어댑터가 ModelView를 직접 생성해서라도 반환해야 한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 이전에는 프론트 컨트롤러가 실제 컨트롤러를 호출했지만 이제는 이 어댑터를 통해서 실제 컨트롤러가 호출된다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	ModelView <span style="color:#a6e22e">handle</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span> Object handler<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
-<li>hello.servlet.web.frontcontroller.v3.controller 패키지에 회원 등록 컨트롤러 MemberSaveControllerV3 생성한다.</li>
-<li>이제 dispatcher.forward() 를 직접 생성해서 호출하지 않고 MyView 객체를 생성하고 거기에 뷰 이름만 넣고 반환하면 된다.</li>
+<li>ControllerV3를 지원하는 ControllerV3HandlerAdapter를 생성한다.</li>
+<li>패키지 위치 hello.servlet.web.frontcontroller.v5.adapter</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v3.controller<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.ModelView<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v3.ControllerV3<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberFormControllerV3</span> <span style="color:#66d9ef">implements</span> ControllerV3<span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> ModelView <span style="color:#a6e22e">process</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ModelView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;new-form&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>	
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>hello.servlet.web.frontcontroller.v3.controller 패키지에 회원 저장 컨트롤러 MemberSaveControllerV3 생성한다.</li>
-<li>파라미터 정보는 Map에 담고 이 Map을 모델에 담아서 프론트컨트롤러가 처리하도록 한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v3.controller<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.Member<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.MemberRepository<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.ModelView<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v3.ControllerV3<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberSaveControllerV3</span> <span style="color:#66d9ef">implements</span> ControllerV3<span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> MemberRepository memberRepository <span style="color:#f92672">=</span> MemberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> ModelView <span style="color:#a6e22e">process</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		String username <span style="color:#f92672">=</span> paramMap<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>paramMap<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">));</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		Member member <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Member<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> age<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>member<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		ModelView mv <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ModelView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;save-result&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		mv<span style="color:#f92672">.</span><span style="color:#a6e22e">getModel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;member&#34;</span><span style="color:#f92672">,</span> member<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> mv<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>hello.servlet.web.frontcontroller.v3.controller 패키지에 회원 목록 컨트롤러 MemberListControllerV3 생성한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v3.controller<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.Member<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.MemberRepository<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.ModelView<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v3.ControllerV3<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemberListControllerV3</span> <span style="color:#66d9ef">implements</span> ControllerV3<span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> MemberRepository memberRepository <span style="color:#f92672">=</span> MemberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> ModelView <span style="color:#a6e22e">process</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		List<span style="color:#f92672">&lt;</span>Member<span style="color:#f92672">&gt;</span> members <span style="color:#f92672">=</span> memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findAll</span><span style="color:#f92672">();</span>
-</span></span><span style="display:flex;"><span>		ModelView mv <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ModelView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;members&#34;</span><span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		mv<span style="color:#f92672">.</span><span style="color:#a6e22e">getModel</span><span style="color:#f92672">().</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;members&#34;</span><span style="color:#f92672">,</span> members<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> mv<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
-<li>hello.servlet.web.frontcontroller.v3 패키지에 프론트 컨트롤러 FrontControllerServletV3를 생성한다.</li>
-<li>프론트 컨트롤러의 도입으로 MyView 객체의 render() 를 호출하는 부분을 모두 일관되게 처리할 수 있다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v3<span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v5.adapter<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.ModelView<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v3.ControllerV3<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v5.MyHandlerAdapter<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ControllerV3HandlerAdapter</span> <span style="color:#66d9ef">implements</span> MyHandlerAdapter<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>Object handler<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//handler가 ControllerV3를 상속받은 type이라면 true 리턴
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>handler <span style="color:#66d9ef">instanceof</span> ControllerV3<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> ModelView <span style="color:#a6e22e">handle</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span> Object handler<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		ControllerV3 controller <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>ControllerV3<span style="color:#f92672">)</span>handler<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap <span style="color:#f92672">=</span> createParamMap<span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		ModelView mv <span style="color:#f92672">=</span> controller<span style="color:#f92672">.</span><span style="color:#a6e22e">process</span><span style="color:#f92672">(</span>paramMap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> mv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">createParamMap</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>		Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span> 
+</span></span><span style="display:flex;"><span>		request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameterNames</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asIterator</span><span style="color:#f92672">().</span><span style="color:#a6e22e">forEachRemaining</span><span style="color:#f92672">(</span>paramName<span style="color:#f92672">-&gt;</span>paramMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>paramName<span style="color:#f92672">,</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span>paramName<span style="color:#f92672">)));</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> paramMap<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>hello.servlet.web.frontcontroller.v5 패키지에 회원 등록 컨트롤러 FrontControllerServletV5 생성한다.</li>
+<li>어댑터가 지원하기만 하면, 어떤 것이라도 URL에 매핑해서 사용할 수 있다. 지금은 V3만 어댑터로 등록해 두었다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller.v5<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.ModelView<span style="color:#f92672">;</span>
@@ -301,51 +245,78 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v3.controller.MemberFormControllerV3<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v3.controller.MemberListControllerV3<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v3.controller.MemberSaveControllerV3<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.v5.adapter.ControllerV3HandlerAdapter<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.annotation.WebServlet<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServlet<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//front-controller/v3/으로 들어오는 모든 요청을 컨트롤 한다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;frontControllerServletV3&#34;</span><span style="color:#f92672">,</span> urlPatterns <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/front-controller/v3/*&#34;</span><span style="color:#f92672">)</span>  
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FrontControllerServletV3</span> <span style="color:#66d9ef">extends</span> HttpServlet <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> ControllerV3<span style="color:#f92672">&gt;</span> controllerMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;frontControllerServletV5&#34;</span><span style="color:#f92672">,</span> urlPatterns <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/front-controller/v5/*&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FrontControllerServletV5</span> <span style="color:#66d9ef">extends</span> HttpServlet <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//컨트롤러 다 지원하기 위해 Object를 사용한다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> handlerMappingMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> List<span style="color:#f92672">&lt;</span>MyHandlerAdapter<span style="color:#f92672">&gt;</span> handlerAdapters <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span> 
 </span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">FrontControllerServletV3</span><span style="color:#f92672">(){</span>
-</span></span><span style="display:flex;"><span>		controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v3/members/new-form&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberFormControllerV3<span style="color:#f92672">());</span>
-</span></span><span style="display:flex;"><span>		controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v3/members/save&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberSaveControllerV3<span style="color:#f92672">());</span>
-</span></span><span style="display:flex;"><span>		controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v3/members&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberListControllerV3<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">FrontControllerServletV5</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		initHandlerAdapters<span style="color:#f92672">();</span>  	<span style="color:#75715e">//핸들러 매핑 초기화
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		initHandlerMappingMap<span style="color:#f92672">();</span> 	<span style="color:#75715e">//어댑터 초기화
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initHandlerAdapters</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		handlerMappingMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v5/v3/members/new-form&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberFormControllerV3<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>		handlerMappingMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v5/v3/members/save&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberSaveControllerV3<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>		handlerMappingMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/front-controller/v5/v3/members&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> MemberListControllerV3<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initHandlerMappingMap</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		handlerAdapters<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> ControllerV3HandlerAdapter<span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>	
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Override</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		String requestURI <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestURI</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//1.요청에 맞는 핸들러 매핑 정보 조회
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Object handler <span style="color:#f92672">=</span> getHandler<span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//다형성 사용 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ControllerV3 controller <span style="color:#f92672">=</span> controllerMap<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>requestURI<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>controller <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>handler <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>			response<span style="color:#f92672">.</span><span style="color:#a6e22e">setStatus</span><span style="color:#f92672">(</span>HttpServletResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">SC_NOT_FOUND</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>	
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//pramMap
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap <span style="color:#f92672">=</span> createParamMap<span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		ModelView mv <span style="color:#f92672">=</span> controller<span style="color:#f92672">.</span><span style="color:#a6e22e">process</span><span style="color:#f92672">(</span>paramMap<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		String viewName <span style="color:#f92672">=</span> mv<span style="color:#f92672">.</span><span style="color:#a6e22e">getViewName</span><span style="color:#f92672">();</span> <span style="color:#75715e">//논리이름
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		MyView view <span style="color:#f92672">=</span>  viewResolver<span style="color:#f92672">(</span>viewName<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		view<span style="color:#f92672">.</span><span style="color:#a6e22e">render</span><span style="color:#f92672">(</span>mv<span style="color:#f92672">.</span><span style="color:#a6e22e">getModel</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span> <span style="color:#75715e">//v2 버전의 MyView객체 뷰에 모델을 추가한 메서드 render를 추가해야한다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//2.위에서 찾은 핸들러를 처리할 수 있는 핸들러 어댑터 조회
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		MyHandlerAdapter adapter <span style="color:#f92672">=</span> getHandlerAdapter<span style="color:#f92672">(</span>handler<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//3.핸들러 어댑터에서 핸들러(컨트롤러) 호출 후  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">//4.모델뷰 반환
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ModelView mv <span style="color:#f92672">=</span> adapter<span style="color:#f92672">.</span><span style="color:#a6e22e">handle</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">,</span> handler<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//5.뷰리졸버 호출 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">//6.마이뷰 반환
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		String viewName <span style="color:#f92672">=</span> mv<span style="color:#f92672">.</span><span style="color:#a6e22e">getViewName</span><span style="color:#f92672">();</span> 
+</span></span><span style="display:flex;"><span>		MyView view <span style="color:#f92672">=</span>  viewResolver<span style="color:#f92672">(</span>viewName<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//7.렌더(모델) 호출 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		view<span style="color:#f92672">.</span><span style="color:#a6e22e">render</span><span style="color:#f92672">(</span>mv<span style="color:#f92672">.</span><span style="color:#a6e22e">getModel</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">createParamMap</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">){</span>
-</span></span><span style="display:flex;"><span>		Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> paramMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span> 
-</span></span><span style="display:flex;"><span>		request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameterNames</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asIterator</span><span style="color:#f92672">().</span><span style="color:#a6e22e">forEachRemaining</span><span style="color:#f92672">(</span>paramName<span style="color:#f92672">-&gt;</span>paramMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>paramName<span style="color:#f92672">,</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span>paramName<span style="color:#f92672">)));</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> paramMap<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//핸들러 매핑 정보인 handlerMappingMap 에서 URL에 매핑된 핸들러(컨트롤러) 객체를 찾아서 반환한
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> Object <span style="color:#a6e22e">getHandler</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		String requestURI <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestURI</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> handlerMappingMap<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>requestURI<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//handler를 처리할 수 있는 어댑터를 adapter.supports(handler) 를 통해서 찾는다
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> MyHandlerAdapter <span style="color:#a6e22e">getHandlerAdapter</span><span style="color:#f92672">(</span>Object handler<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>MyHandlerAdapter adapter <span style="color:#f92672">:</span> handlerAdapters<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>adapter<span style="color:#f92672">.</span><span style="color:#a6e22e">supports</span><span style="color:#f92672">(</span>handler<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> adapter<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;handler adapter를 찾을 수 없습니다. handler=&#34;</span> <span style="color:#f92672">+</span> handler<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>	
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> MyView <span style="color:#a6e22e">viewResolver</span><span style="color:#f92672">(</span>String viewName<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -354,56 +325,15 @@
 </span></span><span style="display:flex;"><span>	
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
-<li>v2 버전에서 만든 뷰(MyView객체)에 모델을 추가한 메서드 render를 추가해야한다.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.frontcontroller<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.RequestDispatcher<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.ServletException<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyView</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String viewPath<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MyView</span><span style="color:#f92672">(</span>String viewPath<span style="color:#f92672">){</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">viewPath</span> <span style="color:#f92672">=</span> viewPath<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//각 컨트롤러가 뷰로 이동시켰던 로직을 따로 분리하여 만든것이다. 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">render</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		RequestDispatcher dispatcher <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestDispatcher</span><span style="color:#f92672">(</span>viewPath<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		dispatcher<span style="color:#f92672">.</span><span style="color:#a6e22e">forward</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//모델을 전달받아 뷰로 이동시키는 함수 추가 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">render</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> model<span style="color:#f92672">,</span> HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		modelToRequestAttribute<span style="color:#f92672">(</span>model<span style="color:#f92672">,</span> request<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		RequestDispatcher dispatcher <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestDispatcher</span><span style="color:#f92672">(</span>viewPath<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		dispatcher<span style="color:#f92672">.</span><span style="color:#a6e22e">forward</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//jsp에 모델에 있는 값을 전달하기 위해 request에 담아주는 작업을 해준다. (jsp는 request에서 값을 받기 때문에)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">modelToRequestAttribute</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> model<span style="color:#f92672">,</span> HttpServletRequest request<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>		model<span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">((</span>key<span style="color:#f92672">,</span>value<span style="color:#f92672">)-&gt;</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> value<span style="color:#f92672">));</span> <span style="color:#75715e">//변수로 루프돌려서 request에 다 담음 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><ul>
 <li>
-<p>뷰와 모델이 다 추가되어 프론트컨트롤러에 많은 변화가 생겼다. 그 대신 각 비지니스 로직을 수행하는 컨트롤러는 훨씬 단순해졌다.</p>
+<p>V3버전의 컨트롤러들을 사용하는 어댑터 패턴을 만들어보았다.</p>
 </li>
 <li>
-<p>개념적으로나 코드 보면서 따라가면 알것같은데 막상 0부터 다시 만들어 보라고하면 못할것같다. 계속 보면서 익숙해져야할듯.</p>
+<p>핸들러 어댑터나 컨트롤러 어댑터를 다 만들어줘야 하는 작업이 늘어났지만 다음에 V4까지 사용가능 하게 추가해 보면 유연하게 사용 가능 하다는게 뭔지 알 수 있겠지.</p>
 </li>
 <li>
-<p><code>http://localhost:8080/front-controller/v3/members</code> <br>
-<code>http://localhost:8080/front-controller/v3/members/new-form</code> <br>
+<p><code>http://localhost:8080/front-controller/v5/v3/members/new-form</code> <br>
+<code>http://localhost:8080/front-controller/v5/v3/members</code> <br>
 접속해보면 잘 동작을 하는걸 확인할 수 있다.</p>
 </li>
 </ul>
