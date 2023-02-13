@@ -6,16 +6,27 @@
     <description>Recent content in Posts on Aroong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MVC 프레임워크 6</title>
+      <link>https://aroong.github.io/posts/13.-mvcframework6/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/13.-mvcframework6/</guid>
+      <description>1. 프론트 컨트롤러 Version 5 (2) 앞에서 만든 FrontControllerServletV5에 ControllerV4를 추가해보자.
+(인프런 수업 듣는중)
+hello.servlet.web.frontcontroller.v5 패키지의 FrontControllerServletV5에 V4를 추가한다.
+package hello.servlet.web.frontcontroller.v5; import java.io.IOException; import java.util.ArrayList; import java.util.HashMap; import java.util.List; import java.util.Map; import hello.servlet.web.frontcontroller.ModelView; import hello.servlet.web.frontcontroller.MyView; import hello.servlet.web.frontcontroller.v3.controller.MemberFormControllerV3; import hello.servlet.web.frontcontroller.v3.controller.MemberListControllerV3; import hello.</description>
+    </item>
+    
     <item>
       <title>MVC 프레임워크 5</title>
       <link>https://aroong.github.io/posts/12.-mvcframework5/</link>
       <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/posts/12.-mvcframework5/</guid>
-      <description>1. 프론트 컨트롤러 Version 5 어댑터 패턴 : 컨트롤러 종류를 선택해서 쓸 수 있게 개발할 수 있다.
-핸들러 : 컨트롤러를 더 넓은 범위의 핸들러로 변경한다. 컨트롤러 개념 뿐 아니라 어떤 종류는 해당하는 어댑터만 있느면 다 처리할 수 있기 때문.
-ControllerV3나 ControllerV4를 선택해서 사용할 수 있게 수정해본다.</description>
+      <description>1. 프론트 컨트롤러 Version 5 (1) 어댑터 패턴 : 컨트롤러 종류를 선택해서 쓸 수 있게 개발할 수 있다.
+핸들러 : 컨트롤러를 더 넓은 범위의 핸들러로 변경한다. 컨트롤러 개념 뿐 아니라 어떤 종류는 해당하는 어댑터만 있느면 다 처리할 수 있기 때문.</description>
     </item>
     
     <item>
