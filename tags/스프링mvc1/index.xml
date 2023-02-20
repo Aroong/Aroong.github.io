@@ -20,6 +20,17 @@
     </item>
     
     <item>
+      <title>MVC 프레임워크 8</title>
+      <link>https://aroong.github.io/posts/15.-mvcframework8/</link>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/15.-mvcframework8/</guid>
+      <description>스프링 MVC 컨트롤러 통합 StrpingMemberFormControllerV2 hello.servlet.web.springmvc.v2 패키지에 StrpingMemberFormControllerV2를 만든다.
+StrpingMemberFormControllerV1의 @RequestMapping을 잘 보면 클래스 단위가 아니라 메서드 단위에 적용된 것을 확인할 수 있다.
+따라서 컨트롤러 클래스를 유연하게 하나로 통합할 수 있다. (인프런 수업 듣는중) package hello.servlet.web.springmvc.v2; import java.util.List; import org.springframework.stereotype.Controller; import org.</description>
+    </item>
+    
+    <item>
       <title>MVC 프레임워크 6</title>
       <link>https://aroong.github.io/posts/13.-mvcframework6/</link>
       <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
