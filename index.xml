@@ -8,6 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 25 Mar 2020 04:52:30 +0600</lastBuildDate><atom:link href="https://aroong.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>MVC 프레임워크 7</title>
+      <link>https://aroong.github.io/posts/14.-mvcframework7/</link>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/14.-mvcframework7/</guid>
+      <description>스프링 MVC 전체 구조 지금까지 직접 만들어 본 스프링 프레임워크 구조를 스프링에서 제공하는 애노테이션을 사용하여 바꿔보자.
+(인프런 수업 듣는중)
+스프링 MVC 구조 1. 회원 등록 폼 StrpingMemberFormControllerV1 hello.servlet.web.springmvc.v1 패키지를 만들고 StrpingMemberFormControllerV1을 스프링MVC를 사용하여 만들어 본다.
+@Controller : 스프링이 자동으로 스프링 빈으로 등록한다.</description>
+    </item>
+    
+    <item>
       <title>MVC 프레임워크 6</title>
       <link>https://aroong.github.io/posts/13.-mvcframework6/</link>
       <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>

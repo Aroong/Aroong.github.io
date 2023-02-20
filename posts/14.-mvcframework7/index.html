@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    MVC 프레임워크 7 | 
+    
+    Aroong&#39;s Blog</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="스프링 MVC 전체 구조 지금까지 직접 만들어 본 스프링 프레임워크 구조를 스프링에서 제공하는 애노테이션을 사용하여 바꿔보자.
+(인프런 수업 듣는중)
+스프링 MVC 구조 1. 회원 등록 폼 StrpingMemberFormControllerV1 hello.servlet.web.springmvc.v1 패키지를 만들고 StrpingMemberFormControllerV1을 스프링MVC를 사용하여 만들어 본다.
+@Controller : 스프링이 자동으로 스프링 빈으로 등록한다.
+    ">
+
+
+<meta property="og:title" content="MVC 프레임워크 7" />
+<meta property="og:description" content="스프링 MVC 전체 구조 지금까지 직접 만들어 본 스프링 프레임워크 구조를 스프링에서 제공하는 애노테이션을 사용하여 바꿔보자.
+(인프런 수업 듣는중)
+스프링 MVC 구조 1. 회원 등록 폼 StrpingMemberFormControllerV1 hello.servlet.web.springmvc.v1 패키지를 만들고 StrpingMemberFormControllerV1을 스프링MVC를 사용하여 만들어 본다.
+@Controller : 스프링이 자동으로 스프링 빈으로 등록한다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aroong.github.io/posts/14.-mvcframework7/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-20T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MVC 프레임워크 7"/>
+<meta name="twitter:description" content="스프링 MVC 전체 구조 지금까지 직접 만들어 본 스프링 프레임워크 구조를 스프링에서 제공하는 애노테이션을 사용하여 바꿔보자.
+(인프런 수업 듣는중)
+스프링 MVC 구조 1. 회원 등록 폼 StrpingMemberFormControllerV1 hello.servlet.web.springmvc.v1 패키지를 만들고 StrpingMemberFormControllerV1을 스프링MVC를 사용하여 만들어 본다.
+@Controller : 스프링이 자동으로 스프링 빈으로 등록한다."/>
+
+<meta itemprop="name" content="MVC 프레임워크 7">
+<meta itemprop="description" content="스프링 MVC 전체 구조 지금까지 직접 만들어 본 스프링 프레임워크 구조를 스프링에서 제공하는 애노테이션을 사용하여 바꿔보자.
+(인프런 수업 듣는중)
+스프링 MVC 구조 1. 회원 등록 폼 StrpingMemberFormControllerV1 hello.servlet.web.springmvc.v1 패키지를 만들고 StrpingMemberFormControllerV1을 스프링MVC를 사용하여 만들어 본다.
+@Controller : 스프링이 자동으로 스프링 빈으로 등록한다."><meta itemprop="datePublished" content="2023-02-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-02-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="331">
+<meta itemprop="keywords" content="스프링MVC1," />
+<link rel="canonical" href="https://aroong.github.io/posts/14.-mvcframework7/" />
+
+<link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>Aroong&#39;s Blog </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="/author/">Author</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/Aroong" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>MVC 프레임워크 7</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Feb 20, 2023
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    5 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1">스프링MVC1</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1">스프링 mvc1</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="스프링-mvc-전체-구조">스프링 MVC 전체 구조</h2>
+<ul>
+<li>
+<p>지금까지 직접 만들어 본 스프링 프레임워크 구조를 스프링에서 제공하는 애노테이션을 사용하여 바꿔보자.</p>
+</li>
+<li>
+<p>(인프런 수업 듣는중)</p>
+</li>
+<li>
+<p>스프링 MVC 구조
+<img src="/image/springframeworkarch.jpg" alt="springframeworkarch"></p>
+</li>
+</ul>
+<h3 id="1-회원-등록-폼-strpingmemberformcontrollerv1">1. 회원 등록 폼 StrpingMemberFormControllerV1</h3>
+<ul>
+<li>hello.servlet.web.springmvc.v1 패키지를 만들고 StrpingMemberFormControllerV1을 스프링MVC를 사용하여 만들어 본다.<br></li>
+<li>@Controller : 스프링이 자동으로 스프링 빈으로 등록한다. (내부에 @Component 애노테이션이 있어서 컴포넌트 스캔의 대상이 됨) <br>
+스프링 MVC에서 애노테이션 기반 컨트롤러로 인식한다.</li>
+<li>@RequestMapping : 요청 정보를 매핑한다. 해당 URL이 호출되면 이 메서드가 호출된다. 애노테이션을 기반으로 동작하기 때문에, 메서드의 이름은 임의로 지으면 된다. <br></li>
+<li>ModelAndView : 모델과 뷰 정보를 담아서 반환하면 된다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.springmvc.v1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.stereotype.Controller<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.servlet.ModelAndView<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Controller</span> <span style="color:#75715e">//스프링이 자동으로 빈에 등록 내부로 가보면 @Component도 있음 그리고 @RequestMapping의 대상으로 인식됨.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//@Component 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//@RequestMapping //@Controller = @Componet @RequestMapping 두개를 같이 클래스 레벨로 선언한거랑 똑같이 동작.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StrpingMemberFormControllerV1</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/springmvc/v1/members/new-form&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> ModelAndView <span style="color:#a6e22e">process</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//뷰리졸버에서 모델이름에 맞는 뷰를 찾아줌
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ModelAndView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;new-form&#34;</span><span style="color:#f92672">);</span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>스프링 뷰 리졸버를 사용하기 위해 application.properties에 아래 코드를 추가해야 한다.</li>
+<li>뷰 리졸버 : 스프링 부트는 InternalResourceViewResolver 라는 뷰 리졸버를 자동으로 등록하는데,<br>
+이때 application.properties 에 등록한 spring.mvc.view.prefix , spring.mvc.view.suffix 설정 정보를 사용해서 등록한다.</li>
+</ul>
+<pre tabindex="0"><code>spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+</code></pre><h3 id="2-회원-저장-폼-springmembersavecontrollerv1">2. 회원 저장 폼 SpringMemberSaveControllerV1</h3>
+<ul>
+<li>hello.servlet.web.springmvc.v1 패키지에 SpringMemberSaveControllerV1을 만든다.</li>
+<li>스프링이 제공하는 ModelAndView 를 통해 Model 데이터를 추가할 때는 addObject() 를 사용하면 된다.<br>이 데이터는 이후 뷰를 렌더링 할 때 사용된다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.springmvc.v1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.stereotype.Controller<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.servlet.ModelAndView<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.Member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.MemberRepository<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletRequest<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> jakarta.servlet.http.HttpServletResponse<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Controller</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpringMemberSaveControllerV1</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> MemberRepository memberRepository <span style="color:#f92672">=</span> MemberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/springmvc/v1/members/save&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> ModelAndView <span style="color:#a6e22e">process</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		String username <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">parseInt</span><span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		Member member <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Member<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> age<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>member<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		ModelAndView mv <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ModelAndView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;save-result&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//편하게 Member오브젝트 넣어주는 메서드
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		mv<span style="color:#f92672">.</span><span style="color:#a6e22e">addObject</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;member&#34;</span><span style="color:#f92672">,</span> member<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> mv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="3-회원-목록-폼-stringmemberlistcontrollerv1">3. 회원 목록 폼 StringMemberListControllerV1</h3>
+<ul>
+<li>hello.servlet.web.springmvc.v1 패키지에 StringMemberListControllerV1을 만든다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.servlet.web.springmvc.v1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.stereotype.Controller<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.servlet.ModelAndView<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.Member<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.domain.member.MemberRepository<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hello.servlet.web.frontcontroller.ModelView<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Controller</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringMemberListControllerV1</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> MemberRepository memberRepository <span style="color:#f92672">=</span> MemberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/springmvc/v1/members&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> ModelAndView <span style="color:#a6e22e">process</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		List<span style="color:#f92672">&lt;</span>Member<span style="color:#f92672">&gt;</span> members <span style="color:#f92672">=</span> memberRepository<span style="color:#f92672">.</span><span style="color:#a6e22e">findAll</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		ModelAndView mv <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ModelAndView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;members&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		mv<span style="color:#f92672">.</span><span style="color:#a6e22e">addObject</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;members&#34;</span><span style="color:#f92672">,</span> members<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> mv<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li><code>http://localhost:8080/springmvc/v1/members/new-form</code> <br>
+<code>http://localhost:8080/springmvc/v1/members</code> <br>
+접속해보면 잘 동작을 하는걸 확인할 수 있다.</li>
+</ul>
+
+    </div>
+</div><div style="margin-top:200px;">
+  <script src="https://utteranc.es/client.js"
+        repo="Aroong/blog-comments"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+	</script>
+</div><br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            Posted by
+            <a class="has-text-light" href="https://github.com/Aroong" target="_blank">
+            Aroong</a>🥰
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
