@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    MVC 프레임워크 11 | 
+    
+    Aroong&#39;s Blog</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
+그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello.
+    ">
+
+
+<meta property="og:title" content="MVC 프레임워크 11" />
+<meta property="og:description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
+그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aroong.github.io/posts/18.-mvcframework11/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-22T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MVC 프레임워크 11"/>
+<meta name="twitter:description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
+그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello."/>
+
+<meta itemprop="name" content="MVC 프레임워크 11">
+<meta itemprop="description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
+그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello."><meta itemprop="datePublished" content="2023-02-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-02-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="220">
+<meta itemprop="keywords" content="스프링MVC1," />
+<link rel="canonical" href="https://aroong.github.io/posts/18.-mvcframework11/" />
+
+<link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>Aroong&#39;s Blog </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="/author/">Author</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/Aroong" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>MVC 프레임워크 11</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Feb 22, 2023
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    3 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1">스프링MVC1</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1">스프링 mvc1</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="요청-매핑-알아보기">요청 매핑 알아보기</h2>
+<ul>
+<li>system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자.</li>
+<li>SLF4J - <a href="http://www.slf4j.org">http://www.slf4j.org</a></li>
+<li>Logback - <a href="http://logback.qos.ch">http://logback.qos.ch</a></li>
+<li>로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,<br>그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다.</li>
+<li>SLF4J는 인터페이스, 구현체로 Logback 사용.</li>
+<li>(인프런 수업 듣는중)</li>
+</ul>
+<h3 id="slf4j-라이브러리-사용">SLF4J 라이브러리 사용</h3>
+<ul>
+<li>hello.springmvc.basic 패키지를 만들고 LogTestController클래스를 만들어 로그를 찍어보자.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.springmvc.basic<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lombok.extern.slf4j.Slf4j<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span> <span style="color:#75715e">//Controller는 String을 반환하면 뷰이름이지만 RestController를 지정하면 그냥 HTTP 메시지 바디에 String으로 바로 입력한다
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LogTestController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//@Slf4j를 선언하면 아래 Logger선언한 것과 같다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//private final Logger log = LoggerFactory.getLogger(getClass()); //내 클래스 지정
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/log-test&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">logTest</span><span style="color:#f92672">(){</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		String name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Spring&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name = &#34;</span> <span style="color:#f92672">+</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//로그레벨 지정 application.properties에서 지정 가능
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">trace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;trace log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//log.trace(&#34;trace log={}&#34;+name); //String +로 쓰는거보다 파라메터만 넘기는게 더 자원을 아낄수 있다.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;debug log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;info log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">warn</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;warn log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;error log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>로그가 출력되는 포멧 - 시간, 로그 레벨, 프로세스 ID, 쓰레드 명, 클래스명, 로그 메시지</li>
+<li>로그 레벨 설정을 변경해서 출력 결과를 보자.
+<ul>
+<li>LEVEL : TRACE &gt; DEBUG &gt; INFO &gt; WARN &gt; ERROR</li>
+</ul>
+</li>
+<li>개발 서버는 debug 출력. 운영 서버는 info 출력.</li>
+<li>위 소스 돌려보면 아래와 같이 로그가 레벨 별로 찍힌다.</li>
+</ul>
+<p><img src="/image/spring_log_level.PNG" alt="spring_log_level"></p>
+<ul>
+<li>application.properties에 로그 설정을 프로젝트나 패키지 단위로 해둘 수 있다.</li>
+</ul>
+<pre tabindex="0"><code>#전체 로그 레벨 설정(기본 info)
+logging.level.root=info
+
+#hello.springmvc 패키지와 그 하위 로그 레벨 설정 가능
+logging.level.hello.springmvc=debug
+</code></pre><h3 id="로그-더-공부하기">로그 더 공부하기</h3>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.logging">https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.logging</a></p>
+
+    </div>
+</div><div style="margin-top:200px;">
+  <script src="https://utteranc.es/client.js"
+        repo="Aroong/blog-comments"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+	</script>
+</div><br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            Posted by
+            <a class="has-text-light" href="https://github.com/Aroong" target="_blank">
+            Aroong</a>🥰
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

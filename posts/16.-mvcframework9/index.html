@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><title>
+    MVC 프레임워크 9 | 
+    
+    Aroong&#39;s Blog</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="스프링 MVC 기본 기능 - 새로운 프로젝트 생성 이제부터 스프링 MVC의 기본 기능들을 알아보기 위해 새로운 프로젝트를 생성한다. https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고
+GENERATE를 눌러 기본 프로젝트를 파일로 내려받는다. JSP를 사용하지 않고 Thymeleaf를 사용할거고 내장 서버(톰캣)을 사용할 거기 때문에 war가 아닌 Jar로 선택한다.
+    ">
+
+
+<meta property="og:title" content="MVC 프레임워크 9" />
+<meta property="og:description" content="스프링 MVC 기본 기능 - 새로운 프로젝트 생성 이제부터 스프링 MVC의 기본 기능들을 알아보기 위해 새로운 프로젝트를 생성한다. https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고
+GENERATE를 눌러 기본 프로젝트를 파일로 내려받는다. JSP를 사용하지 않고 Thymeleaf를 사용할거고 내장 서버(톰캣)을 사용할 거기 때문에 war가 아닌 Jar로 선택한다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aroong.github.io/posts/16.-mvcframework9/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-20T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MVC 프레임워크 9"/>
+<meta name="twitter:description" content="스프링 MVC 기본 기능 - 새로운 프로젝트 생성 이제부터 스프링 MVC의 기본 기능들을 알아보기 위해 새로운 프로젝트를 생성한다. https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고
+GENERATE를 눌러 기본 프로젝트를 파일로 내려받는다. JSP를 사용하지 않고 Thymeleaf를 사용할거고 내장 서버(톰캣)을 사용할 거기 때문에 war가 아닌 Jar로 선택한다."/>
+
+<meta itemprop="name" content="MVC 프레임워크 9">
+<meta itemprop="description" content="스프링 MVC 기본 기능 - 새로운 프로젝트 생성 이제부터 스프링 MVC의 기본 기능들을 알아보기 위해 새로운 프로젝트를 생성한다. https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고
+GENERATE를 눌러 기본 프로젝트를 파일로 내려받는다. JSP를 사용하지 않고 Thymeleaf를 사용할거고 내장 서버(톰캣)을 사용할 거기 때문에 war가 아닌 Jar로 선택한다."><meta itemprop="datePublished" content="2023-02-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-02-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="359">
+<meta itemprop="keywords" content="스프링MVC1," />
+<link rel="canonical" href="https://aroong.github.io/posts/16.-mvcframework9/" />
+
+<link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+
+
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+</head>
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>Aroong&#39;s Blog </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="/author/">Author</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/Aroong" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1>MVC 프레임워크 9</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Feb 20, 2023
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    12 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1">스프링MVC1</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1">스프링 mvc1</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="스프링-mvc-기본-기능---새로운-프로젝트-생성">스프링 MVC 기본 기능 - 새로운 프로젝트 생성</h2>
+<ul>
+<li>이제부터 스프링 MVC의 기본 기능들을 알아보기 위해 새로운 프로젝트를 생성한다.</li>
+<li><a href="https://start.spring.io">https://start.spring.io</a> 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고<br>
+GENERATE를 눌러 기본 프로젝트를 파일로 내려받는다.</li>
+<li>JSP를  사용하지 않고 Thymeleaf를 사용할거고 내장 서버(톰캣)을 사용할 거기 때문에 war가 아닌 Jar로 선택한다.<br>War는 외부 서버에 배포 목적으로 주로 쓰인다.</li>
+<li>(인프런 수업 듣는중)</li>
+</ul>
+<p><img src="/image/springmvc_project_init.PNG" alt="springmvc_project_init"></p>
+<ul>
+<li><a href="https://aroong.github.io/posts/1.-servlet1/">https://aroong.github.io/posts/1.-servlet1/</a> 에서 처럼 Gradle 프로젝트를 이클립스에 Import 한다.<br></li>
+<li>생성된 <code>build.gradle.kts</code>를 보면 프로젝트 기본 정보로 선택한 dependencies에 thymeleaf, lombok, spring web이 들어가 있는 걸 확인할 수 있다.</li>
+</ul>
+<pre tabindex="0"><code>plugins {
+	java
+	id(&#34;org.springframework.boot&#34;) version &#34;3.0.2&#34;
+	id(&#34;io.spring.dependency-management&#34;) version &#34;1.1.0&#34;
+}
+
+group = &#34;hello&#34;
+version = &#34;0.0.1-SNAPSHOT&#34;
+java.sourceCompatibility = JavaVersion.VERSION_17
+
+configurations {
+	compileOnly {
+		extendsFrom(configurations.annotationProcessor.get())
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation(&#34;org.springframework.boot:spring-boot-starter-thymeleaf&#34;)
+	implementation(&#34;org.springframework.boot:spring-boot-starter-web&#34;)
+	compileOnly(&#34;org.projectlombok:lombok&#34;)
+	annotationProcessor(&#34;org.projectlombok:lombok&#34;)
+	testImplementation(&#34;org.springframework.boot:spring-boot-starter-test&#34;)
+}
+
+tasks.withType&lt;Test&gt; {
+	useJUnitPlatform()
+}
+</code></pre><ul>
+<li>src/main/resources에 index.html 소스를 넣어서 welcome page를 만든다. (앞으로 수업에서 배울 내용)</li>
+</ul>
+<p><img src="/image/springmvc_project_import.PNG" alt="springmvc_project_import"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">title</span>&gt;Title&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;로그 출력
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/log-test&#34;</span>&gt;로그 테스트&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">&lt;!-- --&gt;</span>
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;요청 매핑
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/hello-basic&#34;</span>&gt;hello-basic&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping-get-v1&#34;</span>&gt;HTTP 메서드 매핑&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping-get-v2&#34;</span>&gt;HTTP 메서드 매핑 축약&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping/userA&#34;</span>&gt;경로 변수&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping/users/userA/orders/100&#34;</span>&gt;경로 변수 다중&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping-param?mode=debug&#34;</span>&gt;특정 파라미터 조건 매핑&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping-header&#34;</span>&gt;특정 헤더 조건 매핑(POST MAN 필요)&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping-consume&#34;</span>&gt;미디어 타입 조건 매핑 Content-Type(POST MAN 필요)&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mapping-produce&#34;</span>&gt;미디어 타입 조건 매핑 Accept(POST MAN 필요)&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;요청 매핑 - API 예시
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;POST MAN 필요&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;HTTP 요청 기본
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/headers&#34;</span>&gt;기본, 헤더 조회&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;HTTP 요청 파라미터
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/request-param-v1?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 v1&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/request-param-v2?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 v2&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/request-param-v3?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 v3&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/request-param-v4?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 v4&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/request-param-required?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 필수&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/request-param-default?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 기본 값&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/request-param-map?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 MAP&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/model-attribute-v1?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 @ModelAttribute v1&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/model-attribute-v2?username=hello&amp;age=20&#34;</span>&gt;요청 파라미터 @ModelAttribute v2&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;HTTP 요청 메시지
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;POST MAN&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;HTTP 응답 - 정적 리소스, 뷰 템플릿
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/basic/hello-form.html&#34;</span>&gt;정적 리소스&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/response-view-v1&#34;</span>&gt;뷰 템플릿 v1&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/response-view-v2&#34;</span>&gt;뷰 템플릿 v2&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;HTTP 응답 - HTTP API, 메시지 바디에 직접 입력
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/response-body-string-v1&#34;</span>&gt;HTTP API String v1&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/response-body-string-v2&#34;</span>&gt;HTTP API String v2&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/response-body-string-v3&#34;</span>&gt;HTTP API String v3&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/response-body-json-v1&#34;</span>&gt;HTTP API Json v1&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/response-body-json-v2&#34;</span>&gt;HTTP API Json v2&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><ul>
+<li>hello.springmvc패키지의 SpringmvcApplication.java를 Spring Boot Web 서버로 기동 시키고 <br>
+<code>http://localhost:8080</code> 로 접속 하면 아래와 같이 웰컴 페이지가 보이게 된다.</li>
+</ul>
+<p><img src="/image/springmvc_welcome.PNG" alt="springmvc_welcome.PNG"></p>
+
+    </div>
+</div><div style="margin-top:200px;">
+  <script src="https://utteranc.es/client.js"
+        repo="Aroong/blog-comments"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+	</script>
+</div><br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            Posted by
+            <a class="has-text-light" href="https://github.com/Aroong" target="_blank">
+            Aroong</a>🥰
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

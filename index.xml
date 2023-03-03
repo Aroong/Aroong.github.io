@@ -8,6 +8,26 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 25 Mar 2020 04:52:30 +0600</lastBuildDate><atom:link href="https://aroong.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>MVC 프레임워크 11</title>
+      <link>https://aroong.github.io/posts/18.-mvcframework11/</link>
+      <pubDate>Wed, 22 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/18.-mvcframework11/</guid>
+      <description>요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
+그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 10</title>
+      <link>https://aroong.github.io/posts/17.-mvcframework10/</link>
+      <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/17.-mvcframework10/</guid>
+      <description>로깅 간단히 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
+그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello.</description>
+    </item>
+    
+    <item>
       <title>MVC 프레임워크 7</title>
       <link>https://aroong.github.io/posts/14.-mvcframework7/</link>
       <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
@@ -27,7 +47,17 @@
       <guid>https://aroong.github.io/posts/15.-mvcframework8/</guid>
       <description>스프링 MVC 컨트롤러 통합 StrpingMemberFormControllerV2 hello.servlet.web.springmvc.v2 패키지에 StrpingMemberFormControllerV2를 만든다.
 StrpingMemberFormControllerV1의 @RequestMapping을 잘 보면 클래스 단위가 아니라 메서드 단위에 적용된 것을 확인할 수 있다.
-따라서 컨트롤러 클래스를 유연하게 하나로 통합할 수 있다. (인프런 수업 듣는중) package hello.servlet.web.springmvc.v2; import java.util.List; import org.springframework.stereotype.Controller; import org.</description>
+따라서 컨트롤러 클래스를 유연하게 하나로 통합할 수 있다. (인프런 수업 듣는중)1 package hello.servlet.web.springmvc.v2; import java.util.List; import org.springframework.stereotype.Controller; import org.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 9</title>
+      <link>https://aroong.github.io/posts/16.-mvcframework9/</link>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/16.-mvcframework9/</guid>
+      <description>스프링 MVC 기본 기능 - 새로운 프로젝트 생성 이제부터 스프링 MVC의 기본 기능들을 알아보기 위해 새로운 프로젝트를 생성한다. https://start.spring.io 사이트에서 아래와같이 Project, Project Metadata, Dependencies를 세팅하고
+GENERATE를 눌러 기본 프로젝트를 파일로 내려받는다. JSP를 사용하지 않고 Thymeleaf를 사용할거고 내장 서버(톰캣)을 사용할 거기 때문에 war가 아닌 Jar로 선택한다.</description>
     </item>
     
     <item>
