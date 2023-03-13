@@ -8,29 +8,25 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
-그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello.
+<meta name="description" content="요청 매핑 알아보기 hello.springmvc.basic.requestmapping 패키지에 MappingController를 하나 만든다. @Controller는 반환값이 String이면 뷰 이름으로 인식되서 뷰가 랜더링 된다. @RestController는 반환 값으로 뷰를 찾는 것이 아니라, HTTP 메시지 바디에 바로 입력한다. @RequestMapping 대부분의 속성을 배열[] 로 제공하므로 다중 설정이 가능하다. {&quot;/hello-basic&quot;, &ldquo;/hello-go&rdquo;} package hello.
     ">
 
 
 <meta property="og:title" content="MVC 프레임워크 11" />
-<meta property="og:description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
-그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello." />
+<meta property="og:description" content="요청 매핑 알아보기 hello.springmvc.basic.requestmapping 패키지에 MappingController를 하나 만든다. @Controller는 반환값이 String이면 뷰 이름으로 인식되서 뷰가 랜더링 된다. @RestController는 반환 값으로 뷰를 찾는 것이 아니라, HTTP 메시지 바디에 바로 입력한다. @RequestMapping 대부분의 속성을 배열[] 로 제공하므로 다중 설정이 가능하다. {&quot;/hello-basic&quot;, &ldquo;/hello-go&rdquo;} package hello." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aroong.github.io/posts/18.-mvcframework11/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-02-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-02-22T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-03-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-06T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MVC 프레임워크 11"/>
-<meta name="twitter:description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
-그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello."/>
+<meta name="twitter:description" content="요청 매핑 알아보기 hello.springmvc.basic.requestmapping 패키지에 MappingController를 하나 만든다. @Controller는 반환값이 String이면 뷰 이름으로 인식되서 뷰가 랜더링 된다. @RestController는 반환 값으로 뷰를 찾는 것이 아니라, HTTP 메시지 바디에 바로 입력한다. @RequestMapping 대부분의 속성을 배열[] 로 제공하므로 다중 설정이 가능하다. {&quot;/hello-basic&quot;, &ldquo;/hello-go&rdquo;} package hello."/>
 
 <meta itemprop="name" content="MVC 프레임워크 11">
-<meta itemprop="description" content="요청 매핑 알아보기 system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자. SLF4J - http://www.slf4j.org Logback - http://logback.qos.ch 로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,
-그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다. SLF4J는 인터페이스, 구현체로 Logback 사용. (인프런 수업 듣는중) SLF4J 라이브러리 사용 hello."><meta itemprop="datePublished" content="2023-02-22T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-02-22T00:00:00+00:00" />
-<meta itemprop="wordCount" content="220">
+<meta itemprop="description" content="요청 매핑 알아보기 hello.springmvc.basic.requestmapping 패키지에 MappingController를 하나 만든다. @Controller는 반환값이 String이면 뷰 이름으로 인식되서 뷰가 랜더링 된다. @RestController는 반환 값으로 뷰를 찾는 것이 아니라, HTTP 메시지 바디에 바로 입력한다. @RequestMapping 대부분의 속성을 배열[] 로 제공하므로 다중 설정이 가능하다. {&quot;/hello-basic&quot;, &ldquo;/hello-go&rdquo;} package hello."><meta itemprop="datePublished" content="2023-03-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="457">
 <meta itemprop="keywords" content="스프링MVC1," />
 <link rel="canonical" href="https://aroong.github.io/posts/18.-mvcframework11/" />
 
@@ -114,14 +110,14 @@
         <div class="level-left">
             
             <div class="level-item">
-                <p class="subtitle info date">Feb 22, 2023
+                <p class="subtitle info date">Mar 6, 2023
                 </p>
             </div>
             
 
             <div class="level-item">
                 <p class="subtitle info">
-                    3 mins read
+                    4 mins read
                 </p>
             </div>
         </div>
@@ -145,72 +141,186 @@
 
         <h2 id="요청-매핑-알아보기">요청 매핑 알아보기</h2>
 <ul>
-<li>system.out.println()이 아닌 스프링부트 로깅 라이브러리를 활용 해 보자.</li>
-<li>SLF4J - <a href="http://www.slf4j.org">http://www.slf4j.org</a></li>
-<li>Logback - <a href="http://logback.qos.ch">http://logback.qos.ch</a></li>
-<li>로그 라이브러리는 Logback, Log4J, Log4J2 등등 수 많은 라이브러리가 있는데,<br>그것을 통합해서 인터페이스로 제공하는 것이 바로 SLF4J 라이브러리다.</li>
-<li>SLF4J는 인터페이스, 구현체로 Logback 사용.</li>
-<li>(인프런 수업 듣는중)</li>
+<li>hello.springmvc.basic.requestmapping 패키지에 MappingController를 하나 만든다.</li>
+<li>@Controller는 반환값이 String이면 뷰 이름으로 인식되서 뷰가 랜더링 된다.</li>
+<li>@RestController는 반환 값으로 뷰를 찾는 것이 아니라, HTTP 메시지 바디에 바로 입력한다.</li>
+<li>@RequestMapping 대부분의 속성을 배열[] 로 제공하므로 다중 설정이 가능하다. {&quot;/hello-basic&quot;, &ldquo;/hello-go&rdquo;}</li>
 </ul>
-<h3 id="slf4j-라이브러리-사용">SLF4J 라이브러리 사용</h3>
-<ul>
-<li>hello.springmvc.basic 패키지를 만들고 LogTestController클래스를 만들어 로그를 찍어보자.</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.springmvc.basic<span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.springmvc.basic.requestmapping<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.slf4j.Logger<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.slf4j.LoggerFactory<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.http.MediaType<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.PathVariable<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.PostMapping<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMethod<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lombok.extern.slf4j.Slf4j<span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span> <span style="color:#75715e">//Controller는 String을 반환하면 뷰이름이지만 RestController를 지정하면 그냥 HTTP 메시지 바디에 String으로 바로 입력한다
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LogTestController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MappingController</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//@Slf4j를 선언하면 아래 Logger선언한 것과 같다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//private final Logger log = LoggerFactory.getLogger(getClass()); //내 클래스 지정
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/log-test&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">logTest</span><span style="color:#f92672">(){</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		String name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Spring&#34;</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name = &#34;</span> <span style="color:#f92672">+</span> name<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//로그레벨 지정 application.properties에서 지정 가능
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">trace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;trace log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//log.trace(&#34;trace log={}&#34;+name); //String +로 쓰는거보다 파라메터만 넘기는게 더 자원을 아낄수 있다.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;debug log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;info log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">warn</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;warn log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;error log={}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
-</span></span><span style="display:flex;"><span>		
-</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Logger log <span style="color:#f92672">=</span> LoggerFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>getClass<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/hello-basic&#34;</span><span style="color:#f92672">,</span> method <span style="color:#f92672">=</span> RequestMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">POST</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String <span style="color:#a6e22e">helloBasic</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;helloBasic&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 편리한 축약 애노테이션 (코드보기)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * @GetMapping
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * @PostMapping
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * @PutMapping
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * @DeleteMapping
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * @PatchMapping
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/mapping-get-v2&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">mappingGetV2</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mapping-get-v2&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * PathVariable(경로변수) 사용
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 변수명이 같으면 생략 가능
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * @PathVariable(&#34;userId&#34;) String userId -&gt; @PathVariable userId
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/mapping/{userId}&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">mappingPath</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;userId&#34;</span><span style="color:#f92672">)</span> String data<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mappingPath userId={}&#34;</span><span style="color:#f92672">,</span> data<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * PathVariable 사용 다중
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/mapping/users/{userId}/orders/{orderId}&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">mappingPath</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span> String userId<span style="color:#f92672">,</span> <span style="color:#a6e22e">@PathVariable</span> Long orderId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mappingPath userId={}, orderId={}&#34;</span><span style="color:#f92672">,</span> userId<span style="color:#f92672">,</span> orderId<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 파라미터로 추가 매핑
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * params=&#34;mode&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * params=&#34;!mode&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * params=&#34;mode=debug&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * params=&#34;mode!=debug&#34; (! = )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * params = {&#34;mode=debug&#34;,&#34;data=good&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 잘 사용하진 않음
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/mapping-param&#34;</span><span style="color:#f92672">,</span> params <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mode=debug&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">mappingParam</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mappingParam&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 특정 헤더로 추가 매핑
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * headers=&#34;mode&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * headers=&#34;!mode&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * headers=&#34;mode=debug&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * headers=&#34;mode!=debug&#34; (! = )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/mapping-header&#34;</span><span style="color:#f92672">,</span> headers <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mode=debug&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">mappingHeader</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	 log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mappingHeader&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	 <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * Content-Type 헤더 기반 추가 매핑 Media Type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * consumes=&#34;application/json&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * consumes=&#34;!application/json&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * consumes=&#34;application/*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * consumes=&#34;*\/*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * MediaType.APPLICATION_JSON_VALUE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@PostMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/mapping-consume&#34;</span><span style="color:#f92672">,</span> consumes <span style="color:#f92672">=</span> MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">APPLICATION_JSON_VALUE</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">mappingConsumes</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	 log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mappingConsumes&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	 <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/** 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * Accept 헤더 기반 Media Type
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * produces = &#34;text/html&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * produces = &#34;!text/html&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * produces = &#34;text/*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * produces = &#34;*\/*&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@PostMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/mapping-produce&#34;</span><span style="color:#f92672">,</span> produces <span style="color:#f92672">=</span> MediaType<span style="color:#f92672">.</span><span style="color:#a6e22e">TEXT_PLAIN_VALUE</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">mappingProduces</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	 log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mappingProduces&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	 <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="http-메서드">HTTP 메서드</h2>
+<ul>
+<li>@RequestMapping 에 method 속성으로 HTTP 메서드를 지정하지 않으면 HTTP 메서드와 무관하게 호출된다.</li>
+<li>모두 허용 GET, HEAD, POST, PUT, PATCH, DELETE</li>
+</ul>
+<h2 id="요청-매핑---api-예시">요청 매핑 - API 예시</h2>
+<ul>
+<li>hello.springmvc.basic.requestmapping 패키지에 MappingClassController를 만든다.</li>
+<li>회원 관리를 HTTP API로 만든다 생각하고 매핑을 어떻게 하는지 알아보자.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> hello.springmvc.basic.requestmapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.DeleteMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.PatchMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.PostMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/mapping/users&#34;</span><span style="color:#f92672">)</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MappingClassController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 *	회원 목록 조회: GET /users
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 *	회원 등록: POST /users
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 *	회원 조회: GET /users/{userId}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 *	회원 수정: PATCH /users/{userId}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 *	회원 삭제: DELETE /users/{userId}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 * */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@GetMapping</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">user</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;get users&#34;</span><span style="color:#f92672">;</span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@PostMapping</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">addUser</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;post users&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/{userId}&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">findUser</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;find user&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@PatchMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/{userId}&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">updateUser</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;update user&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@DeleteMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/{userId}&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">deleteUser</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;delete user&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
-<li>로그가 출력되는 포멧 - 시간, 로그 레벨, 프로세스 ID, 쓰레드 명, 클래스명, 로그 메시지</li>
-<li>로그 레벨 설정을 변경해서 출력 결과를 보자.
-<ul>
-<li>LEVEL : TRACE &gt; DEBUG &gt; INFO &gt; WARN &gt; ERROR</li>
+<li>Postman으로 위 매핑들을 테스트 해볼 수 있다.
+<img src="/image/postman_mapping_test.PNG" alt="postman_mapping_test.PNG"></li>
 </ul>
-</li>
-<li>개발 서버는 debug 출력. 운영 서버는 info 출력.</li>
-<li>위 소스 돌려보면 아래와 같이 로그가 레벨 별로 찍힌다.</li>
-</ul>
-<p><img src="/image/spring_log_level.PNG" alt="spring_log_level"></p>
-<ul>
-<li>application.properties에 로그 설정을 프로젝트나 패키지 단위로 해둘 수 있다.</li>
-</ul>
-<pre tabindex="0"><code>#전체 로그 레벨 설정(기본 info)
-logging.level.root=info
-
-#hello.springmvc 패키지와 그 하위 로그 레벨 설정 가능
-logging.level.hello.springmvc=debug
-</code></pre><h3 id="로그-더-공부하기">로그 더 공부하기</h3>
-<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.logging">https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.logging</a></p>
 
     </div>
 </div><div style="margin-top:200px;">
