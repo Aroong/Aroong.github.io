@@ -2,28 +2,28 @@
 <html lang="en-us">
 
 <head><title>
-    Posts | 
+    스프링MVC1 | 
     
     Aroong&#39;s Blog</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="List of all articles in section- Posts">
+<meta name="description" content="A description for the meta tag of the site
+    ">
 
 
-
-<meta property="og:title" content="Posts" />
+<meta property="og:title" content="스프링MVC1" />
 <meta property="og:description" content="A description for the meta tag of the site" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://aroong.github.io/posts/" />
+<meta property="og:url" content="https://aroong.github.io/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:title" content="스프링MVC1"/>
 <meta name="twitter:description" content="A description for the meta tag of the site"/>
 
-<meta itemprop="name" content="Posts">
+<meta itemprop="name" content="스프링MVC1">
 <meta itemprop="description" content="A description for the meta tag of the site">
-<link rel="canonical" href="https://aroong.github.io/posts/" />
+<link rel="canonical" href="https://aroong.github.io/tags/%EC%8A%A4%ED%94%84%EB%A7%81mvc1/" />
 
 <link rel="icon" type="image/png" href="https://aroong.github.io/image/AR.ico">
 
@@ -99,14 +99,13 @@
         <div id="page-body" class="column is-7">
 
 <div class="content">
-    <h1 class="title is-3">Posts</h1>
+    <h1>스프링MVC1</h1>
 </div>
 
-
 <div class="blog-brief">
-    <a href="/posts/4.-servlet4/">
+    <a href="/posts/5.-servlet5/">
         <h3 class="title is-4">
-            Servlet 4 - HttpServletResponse
+            Servlet 5 - 서블릿으로 회원관리 만들어보기
         </h3>
     </a>
 
@@ -115,7 +114,7 @@
 
             
             <div class="level-item">
-                <a href="/posts/4.-servlet4/">
+                <a href="/posts/5.-servlet5/">
                     <p class="subtitle info date">Jan 10, 2023
                     </p>
                 </a>
@@ -124,9 +123,9 @@
 
 
             <div class="level-item">
-                <a href="/posts/4.-servlet4/">
+                <a href="/posts/5.-servlet5/">
                     <p class="subtitle info">
-                        4 mins read
+                        8 mins read
                     </p>
                 </a>
             </div>
@@ -142,11 +141,12 @@
         
 
         <div>
-            <a href="/posts/4.-servlet4/">
+            <a href="/posts/5.-servlet5/">
                 <p class="summary">
-                    HttpServletResponse를 가지고 HTTP 응답코드, 해더생성, 바디생성을 해본다. (인프런 강의 듣는 중)
-1. HttpServletResponse 기본 사용법 hello.servlet.basic아래 reponse 폴더를 만든 후 ResponseHeaderServlet 클래스를 생성하고 브라우저에서 요청이 있을때 응답을 어떻게 줄 수 있는지 확인한다.
-package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.servlet.ServletException; import jakarta.servlet.annotation.WebServlet; import jakarta.
+                    순수 서블릿을 사용해 간단한 회원관리 웹앱을 만들어보자. (인프런 강의 듣는 중)
+1. 회원 도메인 모델, 회원 저장관리 레포지토리 생성 hello.servlet.domain.member패키지를 만들고 Member, MemberRepository클래스를 만든다.
+Member 회원 도메인 모델
+package hello.servlet.domain.member; import lombok.Getter; import lombok.Setter; @Getter @Setter public class Member { private Long id; private String username; private int age; public Member() { } public Member(String username, int age) { this.
                     
                 </p>
             </a>
@@ -157,15 +157,15 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
         <div class="level-left">
         </div>
         <div class="level-right">
-            <a href="/posts/4.-servlet4/">Continue reading <i class="fa fa-angle-double-right"
+            <a href="/posts/5.-servlet5/">Continue reading <i class="fa fa-angle-double-right"
                     aria-hidden="true"></i></a>
         </div>
     </div>
     <hr>
 </div><div class="blog-brief">
-    <a href="/posts/3.-servlet3/">
+    <a href="/posts/6.-servlet6/">
         <h3 class="title is-4">
-            Servlet 3 - HTTP 요청 방식
+            Servlet 6 - JSP로 회원관리 만들어보기
         </h3>
     </a>
 
@@ -174,7 +174,7 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
 
             
             <div class="level-item">
-                <a href="/posts/3.-servlet3/">
+                <a href="/posts/6.-servlet6/">
                     <p class="subtitle info date">Jan 10, 2023
                     </p>
                 </a>
@@ -183,9 +183,9 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
 
 
             <div class="level-item">
-                <a href="/posts/3.-servlet3/">
+                <a href="/posts/6.-servlet6/">
                     <p class="subtitle info">
-                        6 mins read
+                        5 mins read
                     </p>
                 </a>
             </div>
@@ -201,10 +201,10 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
         
 
         <div>
-            <a href="/posts/3.-servlet3/">
+            <a href="/posts/6.-servlet6/">
                 <p class="summary">
-                    Servlet 2에 이어 HTTP 요청 메시지를 클라이언트에서 서버로 전달하는데 사용하는 방식 3가지에 대해 알아보자. (인프런 강의 듣는 중)
-[HTTP 요청 데이터 3가지 방법] GET - 쿼리 파라미터 POST - HTML Form HTTP message body (API) 1. GET - 쿼리 파라미터 hello.
+                    서블릿을 사용해 만든 회원관리 로직을 JSP로 다시 만들어보고 서블릿과의 차이점을 확인한다. (인프런 강의 듣는 중)
+1. 스프링부트 프로젝트에 JSP라이브러리 추가 스프링 3.0.1 버전에 맞게 duild.gradle.kts 파일에 JSP용 라이브러리를 추가해준다. 추가한 후에는 프로젝트명 우클릭 &gt; Gradle &gt; Refresh Gradle Project 해주면 라이브러리가 추가되고 JSP를 쓸 수 있다.
                     
                 </p>
             </a>
@@ -215,7 +215,7 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
         <div class="level-left">
         </div>
         <div class="level-right">
-            <a href="/posts/3.-servlet3/">Continue reading <i class="fa fa-angle-double-right"
+            <a href="/posts/6.-servlet6/">Continue reading <i class="fa fa-angle-double-right"
                     aria-hidden="true"></i></a>
         </div>
     </div>
@@ -338,62 +338,6 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
         </div>
     </div>
     <hr>
-</div><div class="blog-brief">
-    <a href="/posts/0.-markdown-syntax/">
-        <h3 class="title is-4">
-            Markdown Syntax Guide
-        </h3>
-    </a>
-
-    <div class="level is-mobile details">
-        <div class="level-left">
-
-            
-            <div class="level-item">
-                <a href="/posts/0.-markdown-syntax/">
-                    <p class="subtitle info date">Apr 16, 2020
-                    </p>
-                </a>
-            </div>
-            
-
-
-            <div class="level-item">
-                <a href="/posts/0.-markdown-syntax/">
-                    <p class="subtitle info">
-                        2 mins read
-                    </p>
-                </a>
-            </div>
-        </div>
-        <div class="level-right is-hidden-touch">
-            
-        </div>
-    </div>
-
-    <div>
-        
-
-        <div>
-            <a href="/posts/0.-markdown-syntax/">
-                <p class="summary">
-                    This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
-
-                    
-                </p>
-            </a>
-        </div>
-    </div>
-
-    <div class="level is-mobile continue-reading">
-        <div class="level-left">
-        </div>
-        <div class="level-right">
-            <a href="/posts/0.-markdown-syntax/">Continue reading <i class="fa fa-angle-double-right"
-                    aria-hidden="true"></i></a>
-        </div>
-    </div>
-    <hr>
 </div>
 
 
@@ -412,85 +356,9 @@ package hello.servlet.basic.reponse; import java.io.IOException; import jakarta.
 
 
 
-<section class="section">
-    <nav class="pagination is-centered">
-
-        
-            <a class="pagination-previous is-dark" href="/posts/page/4/">Previous</a>
-        
-
-        
-            <a class="pagination-next" disabled>Next page</a>
-        
 
 
-        <ul class="pagination-list">
 
-        
-
-            
-            
-
-                <li><a href="/posts/" class="pagination-link">1</a></li>
-
-                
-                
-
-            
-
-        
-
-            
-            
-
-                <li><a href="/posts/page/2/" class="pagination-link">2</a></li>
-
-                
-                
-
-            
-
-        
-
-            
-            
-
-                <li><a href="/posts/page/3/" class="pagination-link">3</a></li>
-
-                
-                
-
-            
-
-        
-
-            
-            
-
-                <li><a href="/posts/page/4/" class="pagination-link">4</a></li>
-
-                
-                
-
-            
-
-        
-
-            
-            
-
-                <li><a href="/posts/page/5/" class="pagination-link is-current">5</a></li>
-
-                
-                
-
-            
-
-        
-
-        </ul>
-    </nav>
-</section>
 
         </div>
     </div>

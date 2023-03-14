@@ -26,7 +26,7 @@
 <meta itemprop="name" content="MVC 프레임워크 12">
 <meta itemprop="description" content="HTTP 요청 - 기본, 헤더 조회 애노테이션 기반의 스프링 컨트롤러는 다양한 파라미터를 지원한다. 헤더 정보를 조회하는 방법을 알아보기. hello.springmvc.basic.request 패키지에 RequestHeaderController를 만들어서 알아본다. package hello.springmvc.basic.request; import java.util.Locale; import org.springframework.http.HttpMethod; import org.springframework.util.MultiValueMap; import org.springframework.web.bind.annotation.CookieValue; import org.springframework.web.bind.annotation.RequestHeader; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RestController; import jakarta."><meta itemprop="datePublished" content="2023-03-07T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-03-07T00:00:00+00:00" />
-<meta itemprop="wordCount" content="579">
+<meta itemprop="wordCount" content="612">
 <meta itemprop="keywords" content="스프링MVC1," />
 <link rel="canonical" href="https://aroong.github.io/posts/19.-mvcframework12/" />
 
@@ -117,7 +117,7 @@
 
             <div class="level-item">
                 <p class="subtitle info">
-                    6 mins read
+                    7 mins read
                 </p>
             </div>
         </div>
@@ -331,7 +331,6 @@
 </span></span></code></pre></div><h2 id="http-요청-파라미터---modelattribute">HTTP 요청 파라미터 - @ModelAttribute</h2>
 <ul>
 <li>요청 파라미터를 받아서 필요한 객체를 만들고 값을 넣어주는 방법을 알아본다.</li>
-<li>위 동일한 클래스에 메소드만 추가해서 확인한다.</li>
 <li>hello.springmvc.basic 패키지에 HelloData 클래스를 추가한다.</li>
 <li>@Data : @Getter, @Setter, @ToString, @EqualsAndHashCode, @RequiredArgsConstructor 를 자동으로 적용해준다.</li>
 </ul>
@@ -344,7 +343,10 @@
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String username<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#a6e22e">@ResponseBody</span>
+</span></span></code></pre></div><ul>
+<li>RequestParamController 클래스에 아래 메소드만 추가해서 확인해 본다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>	<span style="color:#a6e22e">@ResponseBody</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/model-attribute-v1&#34;</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">modelAttributeV1</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@ModelAttribute</span> HelloData helloData<span style="color:#f92672">){</span> <span style="color:#75715e">//@RequestParam String username, @RequestParam int age
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">//HelloData helloData = new HelloData();
@@ -361,7 +363,18 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;username={}, age={}&#34;</span><span style="color:#f92672">,</span>helloData<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">(),</span> helloData<span style="color:#f92672">.</span><span style="color:#a6e22e">getAge</span><span style="color:#f92672">());</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ok&#34;</span><span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><ul>
+<li>@ModelAttribute 와 @RequestParam는 생략할 수 있으니 혼란이 발생할 수 있다.</li>
+<li>둘다 생략했을 경우
+<blockquote>
+<ul>
+<li>String , int , Integer 같은 단순 타입 = @RequestParam</li>
+<li>나머지 = @ModelAttribute (argument resolver 로 지정해둔 타입 외)</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+
     </div>
 </div><div style="margin-top:200px;">
   <script src="https://utteranc.es/client.js"

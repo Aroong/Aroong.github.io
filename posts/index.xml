@@ -6,14 +6,50 @@
     <description>Recent content in Posts on Aroong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://aroong.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MVC 프레임워크 16</title>
+      <link>https://aroong.github.io/posts/24.-mvcframework17/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/24.-mvcframework17/</guid>
+      <description>HTTP 메시지 컨버터 정적 리소스나 뷰 템플릿을 거치지 않고, 직접 HTTP 응답 메시지를 전달하는 경우 HTTP 메시지 바디에 JSON 같은 형식으로 데이터를 실어 보낸다. hello.springmvc.basic.response 패키지에 ResponseBodyController 클래스 생성. package hello.springmvc.basic.response; import java.io.IOException; import org.springframework.http.HttpStatus; import org.springframework.http.ResponseEntity; import org.springframework.web.bind.annotation.GetMapping; import org.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 16</title>
+      <link>https://aroong.github.io/posts/23.-mvcframework16/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/23.-mvcframework16/</guid>
+      <description>HTTP 응답 - HTTP API, 메시지 바디에 직접 입력 정적 리소스나 뷰 템플릿을 거치지 않고, 직접 HTTP 응답 메시지를 전달하는 경우 HTTP 메시지 바디에 JSON 같은 형식으로 데이터를 실어 보낸다. hello.springmvc.basic.response 패키지에 ResponseBodyController 클래스 생성. package hello.springmvc.basic.response; import java.io.IOException; import org.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 15</title>
+      <link>https://aroong.github.io/posts/22.-mvcframework15/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/22.-mvcframework15/</guid>
+      <description>HTTP 응답 - 정적 리소스, 뷰 템플릿 스프링(서버)에서 응답 데이터를 만드는 방법 3가지 정적 리소스 : 웹 브라우저에 정적인 HTML, css, js를 제공할 때 뷰 템플릿 : 웹 브라우저에 동적인 HTML을 제공할 때 HTTP 메시지 : HTTP API를 제공하는 경우(데이터를 전달) HTTP 메시지 바디에 JSON 같은 형식으로 응답 1.</description>
+    </item>
+    
+    <item>
+      <title>MVC 프레임워크 14</title>
+      <link>https://aroong.github.io/posts/21.-mvcframework14/</link>
+      <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://aroong.github.io/posts/21.-mvcframework14/</guid>
+      <description>HTTP 요청 메시지 - JSON 이번에는 HTTP API에서 주로 사용하는 JSON 데이터 형식을 조회해보자. package hello.springmvc.basic.request; import java.io.IOException; import java.nio.charset.StandardCharsets; import org.springframework.http.HttpEntity; import org.springframework.stereotype.Controller; import org.springframework.util.StreamUtils; import org.springframework.web.bind.annotation.RequestBody; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.ResponseBody; import com.fasterxml.jackson.databind.ObjectMapper; import hello.springmvc.basic.HelloData; import jakarta.servlet.ServletInputStream; import jakarta.servlet.http.HttpServletRequest; import jakarta.</description>
+    </item>
+    
     <item>
       <title>MVC 프레임워크 13</title>
       <link>https://aroong.github.io/posts/20.-mvcframework13/</link>
       <pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://aroong.github.io/posts/20.-mvcframework13/</guid>
-      <description>HTTP 요청 메시지 - 단순 텍스트 애노테이션 기반의 스프링 컨트롤러는 다양한 파라미터를 지원한다. 헤더 정보를 조회하는 방법을 알아보기. hello.springmvc.basic.request 패키지에 RequestHeaderController를 만들어서 알아본다. package hello.springmvc.basic.request; import java.util.Locale; import org.springframework.http.HttpMethod; import org.springframework.util.MultiValueMap; import org.springframework.web.bind.annotation.CookieValue; import org.springframework.web.bind.annotation.RequestHeader; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RestController; import jakarta.</description>
+      <description>HTTP 요청 메시지 - 단순 텍스트 파라미터 형식(GET이나 POST)가 아닌 Http message body에 데이터를 직접 담아서 요청이 오는 경우를 확인한다. 요청 파라미터와 다르게, HTTP 메시지 바디를 통해 데이터가 직접 넘어오는 경우는 @RequestParam, @ModelAttribute 를 사용할 수 없다. 먼저 가장 단순한 텍스트 메시지를 HTTP 메시지 바디에 담아서 전송하고, 읽어보자.</description>
     </item>
     
     <item>
